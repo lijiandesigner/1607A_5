@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="StaffDal.cs" />
     <Compile Include="Migrations\201901020748232_mygra.cs" />
     <Compile Include="Migrations\201901020748232_mygra.Designer.cs">
       <DependentUpon>201901020748232_mygra.cs</DependentUpon>
