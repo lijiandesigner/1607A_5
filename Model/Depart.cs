@@ -15,5 +15,7 @@ namespace Model
         public string DepartName { get; set; }
         [Display(Name = "部门描述")]
         public string DepartDesc { get; set; }
+        [Display(Name ="部门创建日期")]
+        public string CreateTime { get; set; }
     }
 }

@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClockDal.cs" />
+    <Compile Include="DepartDAL.cs" />
+    <Compile Include="GoTimeDal.cs" />
+    <Compile Include="JobDAL.cs" />
+    <Compile Include="LeaveDAL.cs" />
+    <Compile Include="SalaryDAL.cs" />
     <Compile Include="StaffDal.cs" />
     <Compile Include="Migrations\201901020748232_mygra.cs" />
     <Compile Include="Migrations\201901020748232_mygra.Designer.cs">

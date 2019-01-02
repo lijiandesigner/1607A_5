@@ -14,6 +14,8 @@ namespace Model
         public int LeaveId { get; set; }
         [Display(Name = "员工工号")]
         public int StaffNo { get; set; }
+        [Display(Name ="员工姓名")]
+        public int StaffName { get; set; }
         [Display(Name = "开始请假时间")]
         public int StartLeaveTime { get; set; }
         [Display(Name = "结束请假时间")]

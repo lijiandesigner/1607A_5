@@ -42,12 +42,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ClockBll.cs" />
+    <Compile Include="DepartBLL.cs" />
+    <Compile Include="GoTimeBll.cs" />
+    <Compile Include="JobBLL.cs" />
+    <Compile Include="LeaveBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalaryBLL.cs" />
+    <Compile Include="StaffBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{fc33018a-ca55-4940-8a60-cfcf5bc7c865}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataHelp\IDataHelp.csproj">
+      <Project>{4E1CAAAC-C134-43FF-8BB3-1354745BBC17}</Project>
+      <Name>IDataHelp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{166a2183-22cb-46ac-b99b-445f58d0811d}</Project>
