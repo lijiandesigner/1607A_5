@@ -24,6 +24,7 @@ namespace MVC.Controllers
             if (username=="卫宇航"&&password=="327614")
             {
                 return View("<script>alert('成功!')</script>");
+                
             }
             return View();
         }
