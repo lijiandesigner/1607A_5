@@ -1,0 +1,16 @@
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\BLL.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\BLL.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\DAL.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\Model.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\EntityFramework.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\DAL.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\DAL.dll.config
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\Model.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\EntityFramework.xml
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\obj\Debug\BLL.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\obj\Debug\BLL.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\IDataHelp.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\BLL\bin\Debug\IDataHelp.pdb

@@ -1,0 +1,6 @@
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\Model\bin\Debug\Model.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\Model\bin\Debug\Model.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\Model\obj\Debug\Model.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\Model\obj\Debug\Model.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\Model\obj\Debug\Model.csprojAssemblyReference.cache

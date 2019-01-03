@@ -1,0 +1,16 @@
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\DAL.dll.config
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\DAL.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\DAL.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\IDataHelp.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\Model.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\IDataHelp.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\Model.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\EntityFramework.xml
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\obj\Debug\DAL.dll
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\obj\Debug\DAL.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\obj\Debug\DAL.Migrations.mygra.resources
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
