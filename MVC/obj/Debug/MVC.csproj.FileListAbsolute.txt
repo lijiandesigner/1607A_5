@@ -1,3 +1,4 @@
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\obj\Debug\MVC.csproj.CoreCompileInputs.cache
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\bin\MVC.dll.config
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\bin\MVC.dll
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\bin\MVC.pdb
@@ -57,8 +58,8 @@ D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\bin\Mode
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\bin\DAL.pdb
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\bin\DAL.dll.config
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\bin\IDataHelp.pdb
+D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\bin\EntityFramework.xml
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\obj\Debug\MVC.csprojAssemblyReference.cache
-D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\obj\Debug\MVC.csproj.CoreCompileInputs.cache
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\obj\Debug\MVC.csproj.CopyComplete
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\obj\Debug\MVC.dll
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\MVC\obj\Debug\MVC.pdb
