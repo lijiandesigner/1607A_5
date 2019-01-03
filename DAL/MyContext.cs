@@ -14,6 +14,11 @@ namespace DAL
         {
 
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
         public virtual DbSet<Clock> Clocks { get; set; }
         public virtual DbSet<Depart> Departs { get; set; }
         public virtual DbSet<GoTime> GoTimes { get; set; }

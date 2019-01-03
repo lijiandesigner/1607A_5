@@ -11,7 +11,7 @@ namespace Model
     public class GoTime
     {
         [Key]
-        [Display(Name = "打卡时间ID")]
+        [Display(Name = "打卡时间")]
         public int GoTimeId { get; set; }
         [Display(Name = "上午上班时间")]
         public DateTime AMGoTime { get; set; }

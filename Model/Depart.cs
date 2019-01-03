@@ -9,6 +9,7 @@ namespace Model
 {
     public class Depart
     {
+        [Key]
         [Display(Name = "部门Id")]
         public int DepartId { get; set; }
         [Display(Name = "部门名称")]
