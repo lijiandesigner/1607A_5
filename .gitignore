@@ -260,5 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 # 解决方法文件和工程文件
-#*.sln
-#*.csproj
+*.sln
+*.csproj
