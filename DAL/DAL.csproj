@@ -53,6 +53,9 @@
     <Compile Include="GoTimeDal.cs" />
     <Compile Include="JobDAL.cs" />
     <Compile Include="LeaveDAL.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="SalaryDAL.cs" />
     <Compile Include="StaffDal.cs" />
     <Compile Include="Migrations\201901020748232_mygra.cs" />
@@ -77,12 +80,40 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="bin\Debug\DAL.dll.config" />
+    <None Include="obj\Debug\DAL.csproj.CopyComplete" />
+    <None Include="obj\Debug\DAL.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\DAL.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\DAL.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\DAL.csproj.CoreCompileInputs.cache" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901020748232_mygra.resx">
       <DependentUpon>201901020748232_mygra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\DAL.Migrations.mygra.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\DAL.dll" />
+    <Content Include="bin\Debug\DAL.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\IDataHelp.dll" />
+    <Content Include="bin\Debug\IDataHelp.pdb" />
+    <Content Include="bin\Debug\Model.dll" />
+    <Content Include="bin\Debug\Model.pdb" />
+    <Content Include="obj\Debug\DAL.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\DAL.dll" />
+    <Content Include="obj\Debug\DAL.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

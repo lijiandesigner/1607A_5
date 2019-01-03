@@ -17,6 +17,16 @@ namespace BLL
             return Help.Add(t);
         }
 
+        /// <summary>
+        /// 测试方法可以删除
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public int Add(string s)
+        {
+            return 1;
+        }
+
         public int Del(int id)
         {
             return Help.Del(id);
