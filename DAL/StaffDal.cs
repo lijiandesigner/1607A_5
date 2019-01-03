@@ -47,11 +47,11 @@ namespace DAL
         /// <summary>
         /// 根据条件查询
         /// </summary>
-        /// <param name="t"></param>
+        /// <param name="t">根据员工id 员工姓名(模糊) 员工编号(模糊) 员工性别 员工年龄 员工电话 部门id 职位id</param>
         /// <returns></returns>
         public List<Staff> GetList(Staff t)
         {
-            throw new NotImplementedException();
+            return context.Staffs.Where(s => s.StaffId == t.StaffId && s.StaffName.Contains(t.StaffName) && s.StaffNo.Contains(t.StaffNo) && s.StaffSex == t.StaffSex && s.StaffAge == t.StaffAge && s.StaffPhone == t.StaffPhone && s.DepartId == t.DepartId && s.JobId == t.JobId).ToList();
         }
 
         /// <summary>

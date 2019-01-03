@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Model.Staff>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffCard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffSex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffPhoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffCard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffSex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffPhoto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.StaffId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.StaffId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.StaffId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
