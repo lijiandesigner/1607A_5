@@ -3,3 +3,9 @@ D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\IDataHelp\bi
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\IDataHelp\obj\Debug\IDataHelp.csproj.CoreCompileInputs.cache
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\IDataHelp\obj\Debug\IDataHelp.dll
 D:\学习资料\小实训1\项目训练\人事考勤财务ERP模块\IDataHelp\obj\Debug\IDataHelp.pdb
+D:\项目\IDataHelp\bin\Debug\IDataHelp.dll
+D:\项目\IDataHelp\bin\Debug\IDataHelp.pdb
+D:\项目\IDataHelp\obj\Debug\IDataHelp.csproj.CoreCompileInputs.cache
+D:\项目\IDataHelp\obj\Debug\IDataHelp.dll
+D:\项目\IDataHelp\obj\Debug\IDataHelp.pdb
+D:\项目\IDataHelp\obj\Debug\IDataHelp.csprojAssemblyReference.cache
