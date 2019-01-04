@@ -11,6 +11,7 @@ namespace MVC.Controllers
     public class StaffController : Controller
     {
         StaffBLL bll = new StaffBLL();
+        DepartBLL DepartBLL = new DepartBLL();
         // GET: Staff
         /// <summary>
         ///显示所有员工数据
@@ -42,6 +43,9 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult StaffAdd()
         {
+            //部门下拉列表
+            var s = DepartBLL.GetList();
+            ViewBag.list = new SelectList(s, "DepartId", "DepartName");
             return View();
         }
 
