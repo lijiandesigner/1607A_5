@@ -2,10 +2,11 @@
 @model IEnumerable<Model.Leave>
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>请假列表</h2>
 
 <p>
     @Html.ActionLink("请假申请", "Add")
@@ -28,10 +29,10 @@
             @Html.DisplayNameFor(model => model.LeaveReason)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StaffId)
+            @Html.DisplayNameFor(model => model.AuditName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LeaveSate)
+            @Html.DisplayNameFor(model => model.LeaveState)
         </th>
         <th></th>
     </tr>
@@ -55,10 +56,10 @@
                 @Html.DisplayFor(modelItem => item.LeaveReason)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StaffId)
+                @Html.DisplayFor(modelItem => item.AuditName)
             </td>
             <td>
-                @{ StateInfo state = (StateInfo)item.LeaveSate;}@state
+                @{ StateInfo state = (StateInfo)Convert.ToInt32(item.LeaveState);}@state
                 @if (state == StateInfo.待审核)
                 {
                     @Html.ActionLink("审核", "Show", new { id = item.LeaveId })
@@ -71,11 +72,6 @@
                 {
                     <a href="#">已通过</a>
                 }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.LeaveId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.LeaveId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.LeaveId })
             </td>
         </tr>
     }

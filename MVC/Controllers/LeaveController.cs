@@ -25,7 +25,8 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Add(Leave leave)
         {
-            leave.LeaveSate = 1;
+            int state = 1;
+            leave.LeaveState = state.ToString();
             int result = BLL.Add(leave);
             if (result > 0)
             {
