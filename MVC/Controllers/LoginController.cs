@@ -22,7 +22,7 @@ namespace MVC.Controllers
             List<Staff> list = BLL.GetList().Where(s => s.StaffName == username && s.StaffCard.Substring(s.StaffCard.Length - 7) == password).ToList();
             if (username=="卫宇航"&&password=="327614")
             {
-                Response.Write("<script>alert('成功!')</script>");
+                Response.Write("<script>alert('登录成功!');location.href='/Depart/Index'</script>");
             }
             return View();
         }
