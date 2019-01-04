@@ -15,3 +15,8 @@ C:\Users\Administrator\Source\Repos\1607A_52\IDataHelp\obj\Debug\IDataHelp.cspro
 C:\Users\Administrator\Source\Repos\1607A_52\IDataHelp\obj\Debug\IDataHelp.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Source\Repos\1607A_52\IDataHelp\obj\Debug\IDataHelp.dll
 C:\Users\Administrator\Source\Repos\1607A_52\IDataHelp\obj\Debug\IDataHelp.pdb
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\bin\Debug\IDataHelp.dll
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\bin\Debug\IDataHelp.pdb
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\obj\Debug\IDataHelp.csproj.CoreCompileInputs.cache
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\obj\Debug\IDataHelp.dll
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\obj\Debug\IDataHelp.pdb
