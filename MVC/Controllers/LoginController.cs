@@ -25,6 +25,7 @@ namespace MVC.Controllers
             {
 
                 return View("<script>alert('成功!')</script>");
+                
             }
             return View();
         }

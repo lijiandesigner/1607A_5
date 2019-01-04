@@ -13,7 +13,7 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("添加员工", "StaffAdd")
     </p>
     <table class="table">
         <tr>
@@ -83,9 +83,8 @@
                 @Html.DisplayFor(modelItem => item.StartTime)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.StaffId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.StaffId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.StaffId })
+                @Html.ActionLink("Edit", "StaffGetById", new { id=item.StaffId }) |
+                @Html.ActionLink("Delete", "StaffDelete", new { id=item.StaffId })
             </td>
         </tr>
     }
