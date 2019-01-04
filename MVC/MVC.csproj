@@ -557,7 +557,6 @@
     <Content Include="Views\Leave\Index.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\StaffAdd.cshtml" />
-    <Content Include="Views\Staff\StaffGetById.cshtml" />
     <Content Include="ueditor\net\.vs\net\v15\.suo" />
     <Content Include="ueditor\net\config.json" />
     <Content Include="ueditor\net\controller.ashx" />
@@ -568,6 +567,7 @@
     <Content Include="ueditor\third-party\video-js\font\vjs.eot" />
     <Content Include="ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="Views\Staff\StaffGetById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

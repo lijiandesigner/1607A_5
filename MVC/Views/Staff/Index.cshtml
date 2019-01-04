@@ -83,8 +83,8 @@
                 @Html.DisplayFor(modelItem => item.StartTime)
             </td>
             <td>
-                @Html.ActionLink("Edit", "StaffGetById", new { id=item.StaffId }) |
-                @Html.ActionLink("Delete", "StaffDelete", new { id=item.StaffId })
+                @Html.ActionLink("修改", "StaffGetById", new { id=item.StaffId }) |
+                @Html.ActionLink("删除", "StaffDelete", new { id=item.StaffId })
             </td>
         </tr>
     }
