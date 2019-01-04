@@ -46,7 +46,7 @@ namespace DAL
         /// <returns></returns>
         public List<Leave> GetList(Leave t)
         {
-            return myc.Leaves.Where(l=>l.StaffNo==t.StaffNo&&l.StartLeaveTime>=t.StartLeaveTime).ToList();
+            return myc.Leaves.Where(l=>l.StaffNo==t.StaffNo&&l.StartLeaveTime.CompareTo(t.StartLeaveTime)==1).ToList();
         }
         /// <summary>
         /// 财务不需要实现根据id查询功能

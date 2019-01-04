@@ -7,27 +7,115 @@ namespace DAL.Migrations
     {
         public override void Up()
         {
-            DropPrimaryKey("dbo.GoTimes");
-            AddColumn("dbo.Clocks", "Hours", c => c.DateTime(nullable: false));
-            DropColumn("dbo.GoTimes", "GoTimeIsd");
-            AddColumn("dbo.Departs", "CreateTime", c => c.String());
-            AddColumn("dbo.GoTimes", "GoTimeId", c => c.Int(nullable: false, identity: true));
-            AddColumn("dbo.Leaves", "StaffName", c => c.Int(nullable: false));
-            AddColumn("dbo.Salaries", "StaffName", c => c.String());
-            AddPrimaryKey("dbo.GoTimes", "GoTimeId");
+            CreateTable(
+                "dbo.Clocks",
+                c => new
+                {
+                    WorkId = c.Int(nullable: false, identity: true),
+                    StaffNO = c.String(),
+                    StaffName = c.String(),
+                    HitTime = c.DateTime(nullable: false),
+                    Hours = c.DateTime(nullable: false),
+                    HitSate = c.String(),
+                })
+                .PrimaryKey(t => t.WorkId);
+
+            CreateTable(
+                "dbo.Departs",
+                c => new
+                {
+                    DepartId = c.Int(nullable: false, identity: true),
+                    DepartName = c.String(),
+                    DepartDesc = c.String(),
+                    CreateTime = c.String(),
+                })
+                .PrimaryKey(t => t.DepartId);
+
+            CreateTable(
+                "dbo.GoTimes",
+                c => new
+                {
+                    GoTimeId = c.Int(nullable: false, identity: true),
+                    AMGoTime = c.DateTime(nullable: false),
+                    AMComeTime = c.DateTime(nullable: false),
+                    PMGoTime = c.DateTime(nullable: false),
+                    PMComeTime = c.DateTime(nullable: false),
+                    CreateTime = c.DateTime(nullable: false),
+                })
+                .PrimaryKey(t => t.GoTimeId);
+
+            CreateTable(
+                "dbo.Jobs",
+                c => new
+                {
+                    JobId = c.Int(nullable: false, identity: true),
+                    JobName = c.String(),
+                    JobDesc = c.String(),
+                    JobMoney = c.Single(nullable: false),
+                })
+                .PrimaryKey(t => t.JobId);
+
+            CreateTable(
+                "dbo.Leaves",
+                c => new
+                {
+                    LeaveId = c.Int(nullable: false, identity: true),
+                    StaffNo = c.Int(nullable: false),
+                    StaffName = c.Int(nullable: false),
+                    StartLeaveTime = c.Int(nullable: false),
+                    EndLeaveTime = c.Int(nullable: false),
+                    LeaveReason = c.Int(nullable: false),
+                    StaffId = c.Int(nullable: false),
+                    LeaveSate = c.Int(nullable: false),
+                })
+                .PrimaryKey(t => t.LeaveId);
+
+            CreateTable(
+                "dbo.Salaries",
+                c => new
+                {
+                    MoneyId = c.Int(nullable: false, identity: true),
+                    StaffNo = c.String(),
+                    StaffName = c.String(),
+                    JobMoney = c.Single(nullable: false),
+                    PunishMoney = c.Single(nullable: false),
+                    AwardMoney = c.Single(nullable: false),
+                    LeaveMoney = c.Single(nullable: false),
+                    AllowMoney = c.Single(nullable: false),
+                    TrueMoney = c.Single(nullable: false),
+                    MoneySate = c.String(),
+                })
+                .PrimaryKey(t => t.MoneyId);
+
+            CreateTable(
+                "dbo.Staffs",
+                c => new
+                {
+                    StaffId = c.Int(nullable: false, identity: true),
+                    StaffNo = c.String(),
+                    StaffName = c.String(),
+                    StaffCard = c.String(),
+                    StaffSex = c.String(),
+                    StaffAge = c.Int(nullable: false),
+                    StaffPhone = c.String(),
+                    StaffPhoto = c.String(),
+                    DepartId = c.Int(nullable: false),
+                    JobId = c.Int(nullable: false),
+                    StartTime = c.DateTime(nullable: false),
+                })
+                .PrimaryKey(t => t.StaffId);
 
         }
-        
+
         public override void Down()
         {
-            AddColumn("dbo.GoTimes", "GoTimeIsd", c => c.Int(nullable: false, identity: true));
-            DropPrimaryKey("dbo.GoTimes");
-            DropColumn("dbo.Salaries", "StaffName");
-            DropColumn("dbo.Leaves", "StaffName");
-            DropColumn("dbo.GoTimes", "GoTimeId");
-            DropColumn("dbo.Departs", "CreateTime");
-            DropColumn("dbo.Clocks", "Hours");
-            AddPrimaryKey("dbo.GoTimes", "GoTimeIsd");
+            DropTable("dbo.Staffs");
+            DropTable("dbo.Salaries");
+            DropTable("dbo.Leaves");
+            DropTable("dbo.Jobs");
+            DropTable("dbo.GoTimes");
+            DropTable("dbo.Departs");
+            DropTable("dbo.Clocks");
         }
     }
 }
