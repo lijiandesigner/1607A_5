@@ -18,7 +18,6 @@ namespace Model
         public string StaffName { get; set; }
         [Display(Name = "打卡时间")]
         public DateTime HitTime { get; set; }
-
         [Display(Name ="上班或下班时间")]
         public DateTime Hours { get; set; }
         [Display(Name = "打卡状态")]

@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GoTimeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
@@ -153,9 +154,15 @@
     <Content Include="assets\ico\apple-touch-icon-57-precomposed.png" />
     <Content Include="assets\ico\apple-touch-icon-72-precomposed.png" />
     <Content Include="assets\ico\favicon.png" />
-    <Content Include="assets\img\backgrounds\1%402x.jpg" />
     <Content Include="assets\img\backgrounds\1.jpg" />
     <Content Include="assets\img\backgrounds\2e1c958f1c0904c9f7af24da5e409cfc.png" />
+    <Content Include="assets\img\backgrounds\3-160511162607.jpg" />
+    <Content Include="assets\img\backgrounds\show_fengjingta_137615_m.jpg" />
+    <Content Include="assets\img\backgrounds\t01592dc964593d2ee5.gif" />
+    <Content Include="assets\img\backgrounds\t01a4b2361d3f1ac1e1.gif" />
+    <Content Include="assets\img\backgrounds\四人帮.jpeg" />
+    <Content Include="assets\img\backgrounds\潮图Screenshot_20180616-101521.jpg" />
+    <Content Include="assets\img\backgrounds\潮图Screenshot_20180616-101919.jpg" />
     <Content Include="assets\js\jquery-1.11.1.js" />
     <Content Include="assets\js\jquery-1.11.1.min.js" />
     <Content Include="assets\js\jquery.backstretch.js" />
@@ -240,6 +247,7 @@
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\StaffAdd.cshtml" />
     <Content Include="Views\Staff\StaffGetById.cshtml" />
+    <Content Include="Views\GoTime\add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
