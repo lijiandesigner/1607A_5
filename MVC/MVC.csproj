@@ -130,6 +130,7 @@
     <Compile Include="Controllers\GoTimeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\LeaveController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
