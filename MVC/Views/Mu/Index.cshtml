@@ -42,12 +42,12 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>福瑞科技有限公司</b></a>
+            <a href="#" class="logo"><b>福瑞科技有限公司</b></a>
             <!--logo end-->
-            
+
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">退出</a></li>
+                    <li><a class="logout" href="#">退出</a></li>
                 </ul>
             </div>
         </header>
@@ -61,58 +61,57 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
 
-                    <p class="centered"><a href="/Staff/StaffGetById"><img src="~/MasterPage/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                    <h5 class="centered">登录人:@ViewBag.Name</h5>
+                    <p class="centered"><a href="#"><img src="~/MasterPage/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                    <h5 class="centered">登录人:</h5>
 
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-cogs"></i>
-                            <span>考勤</span>
-                        </a>
-                            <ul class="sub">
-                                <li><a href="#">打卡</a></li>
-                                <li><a href="#">考勤记录</a></li>
-                                <li><a href="#">时间设置</a></li>
-                            </ul> 
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-cogs"></i>
-                            <span>人事</span>
+                            <i class="fa fa-dashboard"></i>
+                            <span>打卡</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="/Depart/Add">添加部门信息</a></li>
-                            <li><a href="/Depart/Index">显示部门信息</a></li>
-                            <li><a href="/Job/JobAdd">添加职位信息</a></li>
-                            <li><a href="/Job/Index">显示职位信息</a></li>
-                            <li><a href="/Staff/StaffAdd">添加员工信息</a></li>
-                            <li><a href="/Staff/Index">显示员工信息</a></li>
+                            <li><a href="#">打卡</a></li>
+                            <li><a href="#">考勤记录</a></li>
+                            <li><a href="#">时间表</a></li>
                         </ul>
                     </li>
 
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-desktop"></i>
-                            <span>财务</span>
+                            <span>人事</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="/Money/Index">财务列表</a></li>
+                            <li><a href="#">添加部门信息</a></li>
+                            <li><a href="#">显示部门信息</a></li>
+                            <li><a href="#">添加职位信息</a></li>
+                            <li><a href="#">显示职位信息</a></li>
+                            <li><a href="#">添加员工信息</a></li>
+                            <li><a href="#">显示员工信息</a></li>
                         </ul>
                     </li>
 
-
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-cogs"></i>
+                            <span>财务</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="#">财务列表</a></li>
+                        </ul>
+                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
                             <span>设置</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="/Staff/StaffGetById">显示个人信息</a></li>
-                            <li><a href="/Login/Index">注销登录</a></li>
-                            <li><a href="/Staff/">个人信息设置</a></li>
+                            <li><a href="#">显示个人信息</a></li>
+                            <li><a href="#">注销登录</a></li>
                         </ul>
                     </li>
-                   
+
+
                 </ul>
                 <!-- sidebar menu end-->
             </div>
@@ -123,9 +122,7 @@
         *********************************************************************************************************************************************************** -->
         <!--main content start-->
         <section id="main-content">
-            <section class="wrapper">
-                @RenderBody()<!--主体内容-->>
-            </section>
+            <section class="wrapper"></section>
         </section>
 
         <!--main content end-->
@@ -162,17 +159,8 @@
         $(document).ready(function () {
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
-            title: 'Welcome to Dashgum!',
-            // (string | mandatory) the text inside the notification
-            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
-            // (string | optional) the image to display on the left
-            image: 'assets/img/ui-sam.jpg',
-            // (bool | optional) if you want it to fade out on its own or just sit there
-            sticky: true,
-            // (int | optional) the time you want it to be alive for before fading out
-            time: '',
-            // (string | optional) the class name you want to apply to that specific message
-            class_name: 'my-sticky-class'
+            title: '欢迎进入福瑞科技有限公司系统!',
+
         });
 
         return false;
