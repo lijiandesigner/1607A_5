@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Model.Depart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>部门信息</h2>
+
+<p>
+    @Html.ActionLink("创建新的部门", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DepartId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DepartId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.DepartId }, new { onclick= "return confirm('确认删除吗?')"})
+        </td>
+    </tr>
+}
+
+</table>

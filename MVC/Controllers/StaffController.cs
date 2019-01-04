@@ -55,7 +55,7 @@ namespace MVC.Controllers
             int s = bll.Add(staff);
             if (s > 0)
             {
-                return Content("<script>alert('添加成功');</scipt>");
+                return Content(" < script > alert('删除失败'); location.href = '/Demo01/Index';</ script > ");
             }
             else
             {
