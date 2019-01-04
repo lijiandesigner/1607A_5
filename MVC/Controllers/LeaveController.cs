@@ -25,7 +25,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Add(Leave leave)
         {
-            leave.LeaveSate = 1;
+            leave.LeaveState = "已提交,未审核";
             int result = BLL.Add(leave);
             if (result > 0)
             {

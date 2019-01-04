@@ -56,15 +56,20 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult StaffAdd(Staff staff)
         {
+            //员工工号是身份证后六位
+            staff.StaffNo = staff.StaffCard.Substring(staff.StaffCard.Length - 6);
+            //入职时间
+            staff.StartTime = DateTime.Now;
             int s = bll.Add(staff);
             if (s > 0)
             {
-                return Content(" < script > alert('删除失败'); location.href = '/Demo01/Index';</ script > ");
+                return Content("<script>alert('添加成功'); location.href ='/Staff/Index';</script>");
             }
             else
             {
                 return Content("<script>alert('添加失败');</scipt>");
             }
+
         }
 
         /// <summary>
