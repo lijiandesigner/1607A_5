@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IDataHelp;
 using Model;
+using System.Data.Entity;
 
 namespace DAL
 {

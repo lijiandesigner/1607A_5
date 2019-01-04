@@ -13,18 +13,20 @@ namespace Model
         [Display(Name = "请假Id")]
         public int LeaveId { get; set; }
         [Display(Name = "员工工号")]
-        public int StaffNo { get; set; }
+        public string StaffNo { get; set; }
         [Display(Name ="员工姓名")]
-        public int StaffName { get; set; }
+        public string StaffName { get; set; }
         [Display(Name = "开始请假时间")]
-        public int StartLeaveTime { get; set; }
+        public string StartLeaveTime { get; set; }
         [Display(Name = "结束请假时间")]
-        public int EndLeaveTime { get; set; }
+        public string EndLeaveTime { get; set; }
         [Display(Name = "请假原因")]
-        public int LeaveReason { get; set; }
+        public string LeaveReason { get; set; }
         [Display(Name = "审核人")]
-        public int StaffId { get; set; }
-        [Display(Name = "请假情况")]
-        public int LeaveSate { get; set; }
+        public string AuditName { get; set; }
+        [Display(Name = "请假状态")]
+        public string LeaveState { get; set; }
+        [Display(Name ="驳回原因")]
+        public string RejectReason { get; set; }
     }
 }

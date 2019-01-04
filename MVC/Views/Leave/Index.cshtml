@@ -1,0 +1,83 @@
+﻿@using MVC.Controllers
+@model IEnumerable<Model.Leave>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("请假申请", "Add")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartLeaveTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndLeaveTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveReason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveSate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartLeaveTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndLeaveTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveReason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffId)
+            </td>
+            <td>
+                @{ StateInfo state = (StateInfo)item.LeaveSate;}@state
+                @if (state == StateInfo.待审核)
+                {
+                    @Html.ActionLink("审核", "Show", new { id = item.LeaveId })
+                }
+                else if (state == StateInfo.驳回)
+                {
+                    <a href="#">已驳回</a><a href="#">查看原因</a>
+                }
+                else
+                {
+                    <a href="#">已通过</a>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LeaveId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LeaveId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LeaveId })
+            </td>
+        </tr>
+    }
+
+</table>
