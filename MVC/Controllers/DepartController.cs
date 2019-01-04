@@ -22,6 +22,7 @@ namespace MVC.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Add(Depart depart)
         {
