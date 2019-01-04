@@ -13,7 +13,7 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("添加", "JobAdd")
+        <input id="Button1" type="button" value="添加" class="btn btn-default" onclick="location.href='/Job/JobAdd'" />
     </p>
     <table class="table">
         <tr>
@@ -41,8 +41,9 @@
                 @Html.DisplayFor(modelItem => item.JobMoney)
             </td>
             <td>
-                @Html.ActionLink("修改", "JobGetById", new { id=item.JobId }) |
-                @Html.ActionLink("删除", "JobDelete", new { id=item.JobId },new { onclick="return confirm('确认删除吗?')"})
+                <input id="Button1" type="button" value="修改" class="btn btn-default" onclick="location.href='/Job/JobGetById/?id=@item.JobId'" />
+                <input id="Button1" type="button" value="删除" class="btn btn-default" onclick="location.href='/Job/JobDelete/?id=@item.JobId'" />
+
             </td>
         </tr>
     }
