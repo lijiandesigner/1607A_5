@@ -29,7 +29,8 @@ namespace DAL
         /// <returns></returns>
         public int Del(int id)
         {
-            throw new NotImplementedException();
+            myc.Entry(myc.Leaves.Where(s => s.LeaveId == id).FirstOrDefault()).State = EntityState.Deleted;
+            return myc.SaveChanges();
         }
         /// <summary>
         /// 显示所有请假记录
@@ -55,7 +56,7 @@ namespace DAL
         /// <returns></returns>
         public Leave GetT(int id)
         {
-            throw new NotImplementedException();
+            return myc.Leaves.Where(s => s.LeaveId == id).FirstOrDefault();
         }
         /// <summary>
         /// 财务不需要实现修改功能
@@ -64,7 +65,8 @@ namespace DAL
         /// <returns></returns>
         public int Upt(Leave t)
         {
-            throw new NotImplementedException();
+            myc.Entry(t).State = EntityState.Modified;
+            return myc.SaveChanges();
         }
     }
 }

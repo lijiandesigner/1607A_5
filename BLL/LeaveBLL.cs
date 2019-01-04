@@ -27,7 +27,7 @@ namespace BLL
         /// <returns></returns>
         public int Del(int id)
         {
-            throw new NotImplementedException();
+            return dal.Del(id);
         }
         /// <summary>
         /// 显示所有请假记录
@@ -53,7 +53,7 @@ namespace BLL
         /// <returns></returns>
         public Leave GetT(int id)
         {
-            throw new NotImplementedException();
+            return dal.GetT(id);
         }
         /// <summary>
         /// 请假不需要实现修改功能
@@ -62,7 +62,7 @@ namespace BLL
         /// <returns></returns>
         public int Upt(Leave t)
         {
-            throw new NotImplementedException();
+            return dal.Upt(t);
         }
     }
 }

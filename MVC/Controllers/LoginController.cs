@@ -10,10 +10,15 @@ namespace MVC.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Lohin
+        // GET: Login
         StaffBLL BLL = new StaffBLL();
+        public ActionResult Show()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
+            Session["UserName"] = null;
             return View();
         }
         [HttpPost]
@@ -24,7 +29,7 @@ namespace MVC.Controllers
             {
                 Session["Path"] = list[0].StaffPhoto;
                 Session["UserName"] = list[0].StaffName;
-                Response.Write("<script>alert('登录成功!');location.href='/Staff/Index'</script>");
+                Response.Write("<script>alert('登录成功!');location.href='/Login/Show'</script>");
             }
             else
             {
