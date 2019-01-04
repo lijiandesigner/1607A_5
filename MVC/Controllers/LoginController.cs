@@ -23,7 +23,7 @@ namespace MVC.Controllers
             List<Staff> result = list.Where(s => s.StaffName == username && s.StaffCard.Substring(s.StaffCard.Length - 7) == password).ToList();
             if (username=="卫宇航"&&password=="327614")
             {
-                return View("<script>alert('成功!')</script>");
+               Response.Write("<script>alert('成功!')</script>");
                 
             }
             return View();
