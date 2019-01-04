@@ -21,7 +21,6 @@ namespace Model
         public DateTime PMGoTime { get; set; }
         [Display(Name = "下午下班时间")]
         public DateTime PMComeTime { get; set; }
-        [Display(Name = "创建表时间")]
-        public DateTime CreateTime { get; set; }
+
     }
 }
