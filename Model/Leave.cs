@@ -26,7 +26,7 @@ namespace Model
         public string AuditName { get; set; }
         [Display(Name = "请假状态")]
         public string LeaveState { get; set; }
-        [Display(Name ="驳回原因")]
+        [Display(Name ="审批意见")]
         public string RejectReason { get; set; }
     }
 }

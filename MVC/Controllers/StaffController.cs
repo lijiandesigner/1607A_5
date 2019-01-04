@@ -12,6 +12,7 @@ namespace MVC.Controllers
     {
         StaffBLL bll = new StaffBLL();
         DepartBLL DepartBLL = new DepartBLL();
+        JobBLL jobBLL = new JobBLL();
         // GET: Staff
         /// <summary>
         ///显示所有员工数据
@@ -46,6 +47,9 @@ namespace MVC.Controllers
             //部门下拉列表
             var s = DepartBLL.GetList();
             ViewBag.list = new SelectList(s, "DepartId", "DepartName");
+            var p = jobBLL.GetList();
+            ViewBag.jobList = new SelectList(p, "JobId", "JobName");
+            
             return View();
         }
 
@@ -119,5 +123,9 @@ namespace MVC.Controllers
                 return Content("<script>alert('修改失败');</scipt>");
             }
         }
+    }
+    public class job
+    {
+        public string name { get; set; }
     }
 }
