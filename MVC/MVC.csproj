@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Authorization.cs" />
     <Compile Include="Controllers\DepartController.cs" />
+    <Compile Include="Controllers\GoTimeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
@@ -692,6 +693,7 @@
     <Content Include="Views\Job\JobGetById.cshtml" />
     <Content Include="Views\Leave\Add.cshtml" />
     <Content Include="Views\Login\Show.cshtml" />
+    <Content Include="Views\GoTime\add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
