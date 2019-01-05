@@ -13,3 +13,10 @@ F:\专业\小实训1\上海福瑞科技Git项目\Model\bin\Debug\Model.pdb
 F:\专业\小实训1\上海福瑞科技Git项目\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 F:\专业\小实训1\上海福瑞科技Git项目\Model\obj\Debug\Model.dll
 F:\专业\小实训1\上海福瑞科技Git项目\Model\obj\Debug\Model.pdb
+C:\Users\Administrator\Source\Repos\1607A_52\Model\bin\Debug\Model.dll
+C:\Users\Administrator\Source\Repos\1607A_52\Model\bin\Debug\Model.pdb
+C:\Users\Administrator\Source\Repos\1607A_52\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Administrator\Source\Repos\1607A_52\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Source\Repos\1607A_52\Model\obj\Debug\Model.dll
+C:\Users\Administrator\Source\Repos\1607A_52\Model\obj\Debug\Model.pdb
+D:\项目\Model\obj\Debug\Model.csprojAssemblyReference.cache

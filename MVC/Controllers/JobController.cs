@@ -29,6 +29,9 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult JobAdd()
         {
+            DepartBLL dbll = new DepartBLL();
+            List<Depart> list = dbll.GetList();
+            ViewBag.list = new SelectList(list, "DepartName", "DepartName");
             return View();
         }
         /// <summary>
@@ -37,8 +40,9 @@ namespace MVC.Controllers
         /// <param name="job"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult JobAdd(Job job)
+        public ActionResult JobAdd(string bu,Job job)
         {
+            job.JobName = bu + job.JobName;
             int i = bll.Add(job);
             if (i > 0)
             {
@@ -97,6 +101,7 @@ namespace MVC.Controllers
                 
             }
         }
+
 
     }
 }

@@ -10,21 +10,30 @@ namespace MVC.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Lohin
+        // GET: Login
         StaffBLL BLL = new StaffBLL();
+        public ActionResult Show()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
+            Session["UserName"] = null;
             return View();
         }
         [HttpPost]
         public ActionResult Index(string username, string password)
         {
-            List<Staff> list = BLL.GetList();
-            List<Staff> result = list.Where(s => s.StaffName == username && s.StaffCard.Substring(s.StaffCard.Length - 7) == password).ToList();
-            if (username=="卫宇航"&&password=="327614")
+            List<Staff> list = BLL.GetList().Where(s => s.StaffNo == username).ToList();
+            if (list.Count() > 0 && username == password)
             {
-               Response.Write("<script>alert('成功!')</script>");
-                
+                Session["Path"] = list[0].StaffPhoto;
+                Session["UserName"] = list[0].StaffName;
+                Response.Write("<script>alert('登录成功!');location.href='/Login/Show'</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('登录失败!员工号或密码失败')</script>");
             }
             return View();
         }

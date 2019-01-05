@@ -12,6 +12,7 @@ namespace MVC.Controllers
     {
         StaffBLL bll = new StaffBLL();
         DepartBLL DepartBLL = new DepartBLL();
+        JobBLL jobBLL = new JobBLL();
         // GET: Staff
         /// <summary>
         ///显示所有员工数据
@@ -46,6 +47,9 @@ namespace MVC.Controllers
             //部门下拉列表
             var s = DepartBLL.GetList();
             ViewBag.list = new SelectList(s, "DepartId", "DepartName");
+            var p = jobBLL.GetList();
+            ViewBag.jobList = new SelectList(p, "JobId", "JobName");
+            
             return View();
         }
 
@@ -56,15 +60,20 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult StaffAdd(Staff staff)
         {
+            //员工工号是身份证后六位
+            staff.StaffNo = staff.StaffCard.Substring(staff.StaffCard.Length - 6);
+            //入职时间
+            staff.StartTime = DateTime.Now;
             int s = bll.Add(staff);
             if (s > 0)
             {
-                return Content(" < script > alert('删除失败'); location.href = '/Demo01/Index';</ script > ");
+                return Content("<script>alert('添加成功'); location.href ='/Staff/Index';</script>");
             }
             else
             {
                 return Content("<script>alert('添加失败');</scipt>");
             }
+
         }
 
         /// <summary>
@@ -114,5 +123,9 @@ namespace MVC.Controllers
                 return Content("<script>alert('修改失败');</scipt>");
             }
         }
+    }
+    public class job
+    {
+        public string name { get; set; }
     }
 }

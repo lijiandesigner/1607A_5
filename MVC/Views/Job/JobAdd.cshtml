@@ -22,15 +22,25 @@
             <h4>添加职位信息</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
+            <div class="form-group" style="margin-left:200px;">
+                <span class="control-label col-md-2">部门名称</span>
+                <div class="col-md-10">
+                    @Html.DropDownList("bu", ViewBag.list as SelectList, "请选择所属部门",new {@class= "form-control" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-left:200px;">
                 @Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.JobName, new { htmlAttributes = new { @class = "form-control" } })
+                    <select id="Select1" name="JobName" class="form-control">
+                        <option value="部长">部长</option>
+                        <option value="组长">组长</option>
+                        <option value="组员">组员</option>
+                    </select>
                     @Html.ValidationMessageFor(model => model.JobName, "", new { @class = "text-danger" })
                 </div>
             </div>
     
-            <div class="form-group">
+            <div class="form-group" style="margin-left:200px;">
                 @Html.LabelFor(model => model.JobDesc, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.JobDesc, new { htmlAttributes = new { @class = "form-control" } })
@@ -38,7 +48,7 @@
                 </div>
             </div>
     
-            <div class="form-group">
+            <div class="form-group" style="margin-left:200px;">
                 @Html.LabelFor(model => model.JobMoney, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.JobMoney, new { htmlAttributes = new { @class = "form-control" } })
@@ -46,7 +56,7 @@
                 </div>
             </div>
     
-            <div class="form-group">
+            <div class="form-group" style="margin-left:200px;">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="保存" class="btn btn-default" />
                 </div>
@@ -54,8 +64,8 @@
         </div>
     }
     
-    <div>
-        @Html.ActionLink("返回列表", "Index")
+    <div style="margin-left:200px;">
+        <input id="Button1" type="button" value="返回列表" class="btn btn-primary" onclick="location.href='/Job/Index'"/>
     </div>
 </body>
 </html>
