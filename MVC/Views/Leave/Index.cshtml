@@ -1,0 +1,109 @@
+﻿@using MVC.Controllers
+@model IEnumerable<Model.Leave>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartLeaveTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndLeaveTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuditName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartLeaveTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndLeaveTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveReason)
+                </td>
+
+                <td>
+                    @{ StateInfo state = (StateInfo)Convert.ToInt32(item.LeaveState);}
+                    @if (state == StateInfo.待审核)
+                    {
+                        @Html.ActionLink("审核", "Edit", new { id = item.LeaveId })
+                    }
+                    else if (state == StateInfo.通过)
+                    {
+                        <a href="#">已通过</a>
+                    }
+                    else
+                    {
+                        <a href="#">已驳回 | </a><a href="" onclick="Look(@item.LeaveId)">查看原因</a>
+                    }
+                </td>
+                <td>
+                    @if (state == StateInfo.通过 || state == StateInfo.驳回)
+                    {
+                        @Html.DisplayFor(modelItem => item.AuditName)
+                    }
+                    else
+                    {
+                        <a href="#">等待审批人审批</a>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("详情", "Details", new { id = item.LeaveId }) |
+                    @Html.ActionLink("撤销", "Delete", new { id = item.LeaveId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
+<script>
+    function Look(id) {
+        $.ajax({
+            url: "/Leave/Look/",
+            data: { id: id },
+            success: function (data) {
+                alert(data)
+            }
+        })
+    }
+</script>

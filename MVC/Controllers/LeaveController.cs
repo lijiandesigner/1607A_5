@@ -7,7 +7,9 @@ using Model;
 using BLL;
 
 namespace MVC.Controllers
+
 {
+    [Authorization]
     public class LeaveController : Controller
     {
         // GET: Leave
@@ -44,19 +46,26 @@ namespace MVC.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            Leave leave = BLL.GetList().Where(s => s.LeaveId == id).FirstOrDefault();
+            return View(leave);
         }
         [HttpPost]
-        public ActionResult Edit(Leave leave)
+        public ActionResult Edit(Leave leave,string radio1)
         {
+            leave.LeaveState =Convert.ToInt32(radio1)==2 ? "2" : "3";
+            leave.AuditName = Session["UserName"].ToString();
             int result = BLL.Upt(leave);
             if (result > 0)
             {
-                Response.Write("<script>alert('修改成功');location.href='/Leave/Index'</script>");
+                Response.Write("<script>alert('审批成功');location.href='/Leave/Index'</script>");
             }
             return View();
+        }
+        public string Look(int id)
+        {
+            return BLL.GetList().Where(s => s.LeaveId == id).FirstOrDefault().RejectReason;
         }
     }
     public enum StateInfo

@@ -126,8 +126,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Authorization.cs" />
     <Compile Include="Controllers\DepartController.cs" />
-    <Compile Include="Controllers\GoTimeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
@@ -672,8 +672,6 @@
     <Content Include="Views\Depart\Index.cshtml" />
     <Content Include="Views\Depart\Add.cshtml" />
     <Content Include="Views\Depart\Edit.cshtml" />
-    <Content Include="Views\Leave\Add.cshtml" />
-    <Content Include="Views\Leave\Index.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\StaffAdd.cshtml" />
     <Content Include="ueditor\net\.vs\net\v15\.suo" />
@@ -687,10 +685,13 @@
     <Content Include="ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="ueditor\third-party\video-js\font\vjs.woff" />
     <Content Include="Views\Staff\StaffGetById.cshtml" />
+    <Content Include="Views\Leave\Edit.cshtml" />
+    <Content Include="Views\Leave\Index.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\JobAdd.cshtml" />
     <Content Include="Views\Job\JobGetById.cshtml" />
-    <Content Include="Views\GoTime\add.cshtml" />
+    <Content Include="Views\Leave\Add.cshtml" />
+    <Content Include="Views\Login\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
