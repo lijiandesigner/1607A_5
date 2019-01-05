@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Model.GoTime>
+
+
+<table class="table">
+    <tr>
+        <th>
+            上午上班打卡时间
+        </th>
+        <th>
+            上午下班打卡时间
+        </th>
+        <th>
+            下午上班打卡时间
+        </th>
+        <th>
+            下午下班打卡时间
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AMGoTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AMComeTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PMGoTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PMComeTime)
+        </td>
+        <td>
+            <input id="Button1" type="button" value="修改时间" onclick="location.href='GoTime/Upd/?id=@item.GoTimeId'" />
+        </td>
+    </tr>
+}
+
+</table>

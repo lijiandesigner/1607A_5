@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Model.Clock>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <span>员工编号：</span> <input id="Text1" type="text" name="FindBH" />
+    <span>员工姓名：</span><input id="Text1" type="text" name="FindName" />
+    <input id="Submit1" type="submit" value="查询" />
+}
+<table class="table">
+    <tr>
+        <th>
+            员工编号
+        </th>
+        <th>
+            员工姓名
+        </th>
+        <th>
+            打卡时间
+        </th>
+        <th>
+            上班/下班时间
+        </th>
+        <th>
+            打卡状态
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HitTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HitSate)
+            </td>
+            <td>
+                <input id="Button1" type="button" value="修改记录" onclick="location.href='Clock/Upd/?id=@item.WorkId'"/>
+                <input id="Button1" type="button" value="删除记录" onabort="location.href='Clock/Del/?id=@item.WorkId'"/>
+            </td>
+        </tr>
+    }
+
+</table>

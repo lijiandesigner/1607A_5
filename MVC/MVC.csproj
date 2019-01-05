@@ -126,9 +126,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClockController.cs" />
     <Compile Include="Controllers\DepartController.cs" />
+    <Compile Include="Controllers\GoTimeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LeaveController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
@@ -158,6 +160,10 @@
     <Content Include="assets\img\backgrounds\1%402x.jpg" />
     <Content Include="assets\img\backgrounds\1.jpg" />
     <Content Include="assets\img\backgrounds\2e1c958f1c0904c9f7af24da5e409cfc.png" />
+    <Content Include="assets\img\backgrounds\3-160511162607.jpg" />
+    <Content Include="assets\img\backgrounds\show_fengjingta_137615_m.jpg" />
+    <Content Include="assets\img\backgrounds\t01592dc964593d2ee5.gif" />
+    <Content Include="assets\img\backgrounds\t01a4b2361d3f1ac1e1.gif" />
     <Content Include="assets\img\backgrounds\t01f1312c184c42a442.jpg" />
     <Content Include="assets\js\jquery-1.11.1.js" />
     <Content Include="assets\js\jquery-1.11.1.min.js" />
@@ -245,8 +251,15 @@
     <Content Include="Views\Depart\Index.cshtml" />
     <Content Include="Views\Depart\Add.cshtml" />
     <Content Include="Views\Depart\Edit.cshtml" />
-    <Content Include="Views\Leave\Add.cshtml" />
-    <Content Include="Views\Leave\Index.cshtml" />
+    <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\Job\JobAdd.cshtml" />
+    <Content Include="Views\Job\JobGetById.cshtml" />
+    <Content Include="Views\Clock\Index.cshtml" />
+    <Content Include="Views\Clock\daka.cshtml" />
+    <Content Include="Views\GoTime\Index.cshtml" />
+    <Content Include="Views\GoTime\add.cshtml" />
+    <Content Include="Views\GoTime\Upd.cshtml" />
+    <Content Include="Views\Clock\Upd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
