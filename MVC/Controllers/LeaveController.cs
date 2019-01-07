@@ -32,18 +32,17 @@ namespace MVC.Controllers
             int result = BLL.Add(leave);
             if (result > 0)
             {
-                Response.Write("<script>alert('添加成功');location.href='/Leave/Index'</script>");
+                Response.Write("<script>alert('添加成功');location.href='/Leave/Index';</script>");
             }
             return View();
         }
-        public ActionResult Delete(int id)
+        public void Delete(int id)
         {
             int result = BLL.Del(id);
             if (result > 0)
             {
-                Response.Write("<script>alert('撤销成功');location.href='/Leave/Index'</script>");
+                Response.Write("<script>alert('撤销成功');location.href='/Leave/Index';</script>");
             }
-            return View();
         }
         [HttpGet]
         public ActionResult Edit(int id)

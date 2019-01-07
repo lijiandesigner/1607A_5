@@ -13,6 +13,7 @@ namespace MVC.Controllers
         StaffBLL bll = new StaffBLL();
         DepartBLL DepartBLL = new DepartBLL();
         JobBLL jobBLL = new JobBLL();
+        SalaryBLL salaryBLL = new SalaryBLL();
         // GET: Staff
         /// <summary>
         ///显示所有员工数据
@@ -21,6 +22,7 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            xiala();
             List<Staff> s = bll.GetList();
             return View(s);
         }
@@ -31,9 +33,16 @@ namespace MVC.Controllers
         /// <param name="staff">根据员工id 员工姓名(模糊) 员工编号(模糊) 员工性别 员工年龄 员工电话 部门id 职位id</param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Index(Staff staff)
+        public ActionResult Index(int staffid=0, string name="", string no="", int bumenid=0, int zhiid=0)
         {
-            List<Staff> s = bll.GetList(staff);
+            xiala();
+            Staff st = new Staff();
+            st.StaffId = staffid;
+            st.StaffName = name;
+            st.StaffNo = no;
+            st.DepartId = bumenid;
+            st.JobId = zhiid;
+            List<Staff> s = bll.GetList(st);
             return View(s);
         }
 
@@ -45,14 +54,17 @@ namespace MVC.Controllers
         public ActionResult StaffAdd()
         {
             //部门下拉列表
+            xiala();
+            return View();
+        }
+        public ActionResult xiala()
+        {
             var s = DepartBLL.GetList();
             ViewBag.list = new SelectList(s, "DepartId", "DepartName");
             var p = jobBLL.GetList();
             ViewBag.jobList = new SelectList(p, "JobId", "JobName");
-            
             return View();
         }
-
         /// <summary>
         /// 添加员工调用方法 此方法将传入到数据库
         /// </summary>
@@ -60,6 +72,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult StaffAdd(Staff staff)
         {
+           
             //员工工号是身份证后六位
             staff.StaffNo = staff.StaffCard.Substring(staff.StaffCard.Length - 6);
             //入职时间
@@ -67,13 +80,21 @@ namespace MVC.Controllers
             int s = bll.Add(staff);
             if (s > 0)
             {
-                return Content("<script>alert('添加成功'); location.href ='/Staff/Index';</script>");
+                Response.Write ("<script>alert('添加成功');location.href ='/Staff/Index'</script>");
             }
             else
             {
-                return Content("<script>alert('添加失败');</scipt>");
+                Response.Write("<script>alert('添加失败')</script>");
             }
-
+            xiala();
+            Salary salary = new Salary();
+            salary.StaffNo = staff.StaffNo;
+            salary.StaffName = staff.StaffName;
+            salary.JobMoney = jobBLL.GetList().Where(ss => ss.JobId == staff.JobId).FirstOrDefault().JobMoney;
+            salary.TrueMoney = salary.JobMoney;
+            salary.MoneySate = "0";
+            salaryBLL.Add(salary);
+            return View();
         }
 
         /// <summary>
@@ -81,17 +102,18 @@ namespace MVC.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult StaffDelete(int id)
+        public void StaffDelete(int id)
         {
             int s = bll.Del(id);
             if (s > 0)
             {
-                return Content("<script>alert('删除成功');</scipt>");
+                Response.Write("<script>alert('删除成功');location.href ='/Staff/Index'</script>");
             }
             else
             {
-                return Content("<script>alert('删除失败');</scipt>");
+                Response.Write("<script>alert('删除失败')</script>");
             }
+           
         }
         
         /// <summary>
@@ -102,6 +124,7 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult StaffGetById(int id)
         {
+            xiala();
             return View(bll.GetT(id));
         }
 
@@ -116,12 +139,13 @@ namespace MVC.Controllers
             int s = bll.Upt(staff);
             if (s > 0)
             {
-                return Content("<script>alert('修改成功');</scipt>");
+                Response.Write("<script>alert('修改成功');location.href ='/Staff/Index'</script>");
             }
             else
             {
-                return Content("<script>alert('修改失败');</scipt>");
+                Response.Write("<script>alert('修改失败')</script>");
             }
+            return View();
         }
     }
     public class job
