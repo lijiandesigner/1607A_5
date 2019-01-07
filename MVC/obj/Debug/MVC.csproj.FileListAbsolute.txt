@@ -359,8 +359,6 @@ F:\专业\小实训1\上海福瑞科技Git项目\MVC\bin\EntityFramework.xml
 F:\专业\小实训1\上海福瑞科技Git项目\MVC\obj\Debug\MVC.csproj.CopyComplete
 D:\学习资料\小实训1\项目训练\项目\MVC\obj\Debug\MVC.csprojAssemblyReference.cache
 D:\学习资料\小实训1\项目训练\项目\MVC\obj\Debug\MVC.csproj.CoreCompileInputs.cache
-D:\学习资料\小实训1\项目训练\项目\MVC\obj\Debug\MVC.dll
-D:\学习资料\小实训1\项目训练\项目\MVC\obj\Debug\MVC.pdb
 D:\学习资料\小实训1\项目训练\项目\MVC\bin\MVC.dll.config
 D:\学习资料\小实训1\项目训练\项目\MVC\bin\MVC.dll
 D:\学习资料\小实训1\项目训练\项目\MVC\bin\MVC.pdb
@@ -456,3 +454,5 @@ D:\学习资料\小实训1\项目训练\项目\MVC\bin\zh-Hans\System.Web.WebPag
 D:\学习资料\小实训1\项目训练\项目\MVC\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\学习资料\小实训1\项目训练\项目\MVC\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 D:\学习资料\小实训1\项目训练\项目\MVC\obj\Debug\MVC.csproj.CopyComplete
+D:\学习资料\小实训1\项目训练\项目\MVC\obj\Debug\MVC.dll
+D:\学习资料\小实训1\项目训练\项目\MVC\obj\Debug\MVC.pdb

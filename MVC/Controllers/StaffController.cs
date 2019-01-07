@@ -33,7 +33,7 @@ namespace MVC.Controllers
         /// <param name="staff">根据员工id 员工姓名(模糊) 员工编号(模糊) 员工性别 员工年龄 员工电话 部门id 职位id</param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Index(int staffid=0, string name="", string no="", int bumenid=0, int zhiid=0)
+        public ActionResult Index(int staffid=0, string name="", string no="", string bumenid="", string zhiid="")
         {
             xiala();
             Staff st = new Staff();
@@ -60,9 +60,9 @@ namespace MVC.Controllers
         public ActionResult xiala()
         {
             var s = DepartBLL.GetList();
-            ViewBag.list = new SelectList(s, "DepartId", "DepartName");
+            ViewBag.list = new SelectList(s, "DepartName", "DepartName");
             var p = jobBLL.GetList();
-            ViewBag.jobList = new SelectList(p, "JobId", "JobName");
+            ViewBag.jobList = new SelectList(p, "JobName", "JobName");
             return View();
         }
         /// <summary>
@@ -90,7 +90,7 @@ namespace MVC.Controllers
             Salary salary = new Salary();
             salary.StaffNo = staff.StaffNo;
             salary.StaffName = staff.StaffName;
-            salary.JobMoney = jobBLL.GetList().Where(ss => ss.JobId == staff.JobId).FirstOrDefault().JobMoney;
+            salary.JobMoney = jobBLL.GetList().Where(ss => ss.JobName == staff.JobId).FirstOrDefault().JobMoney;
             salary.TrueMoney = salary.JobMoney;
             salary.MoneySate = "0";
             salaryBLL.Add(salary);
