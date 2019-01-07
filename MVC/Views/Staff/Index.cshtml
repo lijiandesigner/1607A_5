@@ -15,99 +15,166 @@
     <p>
         <h2>@Html.ActionLink("添加员工", "StaffAdd")</h2>
     </p>
+    @*@foreach (var item in Model)
+        {
+            <div style="width:500px;height:260px;padding:20px,10px; float:left;margin:50px;background-color:#89c3f3;">
+                <div style="float:left;width:100px;height:100px;padding-bottom:40px;padding-top:40px;padding-left:20px;padding-right:20px;">
+                    <img src="@item.StaffPhoto" alt="" style="width:100px;height:100px;border-radius:50%" />
+                </div>
+                <div style="float:left">
+
+                </div>
+            </div>
+        }*@
+
+
+    @*<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffPhoto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffCard)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffSex)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffAge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffPhone)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DepartId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartTime)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.StaffPhoto" alt="" style="width:100px;height:100px;border-radius:50%" />
+                    </td>
+                    <td>
+                        <span style="line-height:100px">@item.StaffNo</span>
+                    </td>
+                    <td>
+                        <span style="line-height:100px">@item.StaffName</span>
+                    </td>
+                    <td>
+                        <span style="line-height:100px">@item.StaffCard.Substring(0, 6).....@item.StaffCard.Substring(item.StaffCard.Length - 4)</span>
+                    </td>
+                    <td>
+                        <span style="line-height:100px">@item.StaffSex</span>
+                    </td>
+                    <td>
+                        <span style="line-height:100px">@item.StaffAge</span>
+                    </td>
+                    <td>
+                        <span style="line-height:100px">@item.StaffPhone</span>
+                    </td>
+
+                    <td>
+                        <span style="line-height:100px">@item.DepartId</span>
+                    </td>
+                    <td>
+                        <span style="line-height:100px">@item.JobId</span>
+                    </td>
+                    <td>
+                        <span style="line-height:100px">@item.StartTime</span>
+                    </td>
+                    <td>
+
+                        <span style="line-height:100px">
+                            @Html.ActionLink("修改", "StaffGetById", new { id = item.StaffId }) |
+                            @Html.ActionLink("删除", "StaffDelete", new { id = item.StaffId })
+                        </span>
+                    </td>
+                </tr>
+            }
+
+        </table>*@
+
     @foreach (var item in Model)
     {
-        <div style="width:500px;height:260px;padding:20px,10px; float:left;margin:50px;background-color:#89c3f3;">
-            <div style="float:left;width:100px;height:100px;padding-bottom:40px;padding-top:40px;padding-left:20px;padding-right:20px;">
-                <img src="@item.StaffPhoto" alt="" style="width:100px;height:100px;border-radius:50%" />
-            </div>
-            <div style="float:left">
-
-            </div>
+        <div class="col-lg-4">
+            <table class="table" style="width:99%;height:50px;background-color:white;margin-left:5px;border-color:white;text-align:center">
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" rowspan="5">
+                        <img src="@item.StaffPhoto" alt="" style="width:100px;height:100px;border-radius:50%" />
+                    </td>
+                    <td class="auto-style1">
+                        员工身份证:<span style="line-height:15px">@item.StaffCard.Substring(0, 6).....@item.StaffCard.Substring(item.StaffCard.Length - 4)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        员工性别: <span style="line-height:15px">@item.StaffSex</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        员工年龄: <span style="line-height:15px">@item.StaffAge</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        员工手机号码:<span style="line-height:15px">@item.StaffPhone</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        所属部门:<span style="line-height:15px">@item.DepartId</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        编号:<span style="line-height:15px">@item.StaffNo</span>
+                    </td>
+                    <td>
+                        所属职位:<span style="line-height:15px">@item.JobId</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        姓名:<span style="line-height:15px">@item.StaffName</span>
+                    </td>
+                    <td>
+                        入职时间:<span style="line-height:15px">@item.StartTime</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">&nbsp;</td>
+                    <td>
+                        <span style="line-height:15px">
+                            @Html.ActionLink("修改", "StaffGetById", new { id = item.StaffId }) |
+                            @Html.ActionLink("删除", "StaffDelete", new { id = item.StaffId })
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </table>
         </div>
     }
-
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffPhoto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffCard)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffSex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffAge)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffPhone)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.DepartId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JobId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartTime)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img src="@item.StaffPhoto" alt="" style="width:100px;height:100px;border-radius:50%" />
-                </td>
-                <td>
-                    <span style="line-height:100px">@item.StaffNo</span>
-                </td>
-                <td>
-                    <span style="line-height:100px">@item.StaffName</span>
-                </td>
-                <td>
-                    <span style="line-height:100px">@item.StaffCard.Substring(0, 6).....@item.StaffCard.Substring(item.StaffCard.Length - 4)</span>
-                </td>
-                <td>
-                    <span style="line-height:100px">@item.StaffSex</span>
-                </td>
-                <td>
-                    <span style="line-height:100px">@item.StaffAge</span>
-                </td>
-                <td>
-                    <span style="line-height:100px">@item.StaffPhone</span>
-                </td>
-
-                <td>
-                    <span style="line-height:100px">@item.DepartId</span>
-                </td>
-                <td>
-                    <span style="line-height:100px">@item.JobId</span>
-                </td>
-                <td>
-                    <span style="line-height:100px">@item.StartTime</span>
-                </td>
-                <td>
-
-                    <span style="line-height:100px">
-                        @Html.ActionLink("修改", "StaffGetById", new { id = item.StaffId }) |
-                        @Html.ActionLink("删除", "StaffDelete", new { id = item.StaffId })
-                    </span>
-                </td>
-            </tr>
-        }
-
-    </table>
-</body>
+    </body>
 </html>
