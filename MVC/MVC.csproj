@@ -700,6 +700,7 @@
     <Content Include="Views\Leave\Add.cshtml" />
     <Content Include="Views\Leave\Edit.cshtml" />
     <Content Include="Views\Leave\Index.cshtml" />
+    <Content Include="Views\Staff\StaffGetById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

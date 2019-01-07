@@ -102,6 +102,8 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult StaffGetById(int id)
         {
+            ViewBag.dep = DepartBLL.GetList();
+            ViewBag.job = jobBLL.GetList();
             return View(bll.GetT(id));
         }
 
