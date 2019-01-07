@@ -21,3 +21,9 @@ F:\专业\小实训1\上海福瑞科技Git项目\IDataHelp\obj\Debug\IDataHelp.c
 F:\专业\小实训1\上海福瑞科技Git项目\IDataHelp\obj\Debug\IDataHelp.csproj.CoreCompileInputs.cache
 F:\专业\小实训1\上海福瑞科技Git项目\IDataHelp\obj\Debug\IDataHelp.dll
 F:\专业\小实训1\上海福瑞科技Git项目\IDataHelp\obj\Debug\IDataHelp.pdb
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\bin\Debug\IDataHelp.dll
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\bin\Debug\IDataHelp.pdb
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\obj\Debug\IDataHelp.csproj.CoreCompileInputs.cache
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\obj\Debug\IDataHelp.dll
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\obj\Debug\IDataHelp.pdb
+D:\学习资料\小实训1\项目训练\项目\IDataHelp\obj\Debug\IDataHelp.csprojAssemblyReference.cache

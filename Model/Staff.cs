@@ -15,22 +15,30 @@ namespace Model
         [Display(Name ="员工编号")]
         public string StaffNo { get; set; }
         [Display(Name ="员工姓名")]
+        [Required]
         public string StaffName { get; set; }
         [Display(Name ="员工身份证")]
+        [Required]
         public string StaffCard { get; set; }
         [Display(Name ="员工性别")]
         public string StaffSex { get; set; }
         [Display(Name ="员工年龄")]
+        [Required]
         public int StaffAge { get; set; }
         [Display(Name ="员工手机号码")]
+        [Required]
         public string StaffPhone { get; set; }
         [Display(Name ="员工头像")]
+        [Required]
         public string StaffPhoto { get; set; }
         [Display(Name ="所属部门")]
+        [Required]
         public int DepartId { get; set; }
         [Display(Name ="所属职位")]
+        [Required]
         public int JobId { get; set; }
         [Display(Name ="入职时间")]
+        [Required]
         public DateTime StartTime { get; set; }
     }
 }

@@ -517,6 +517,10 @@
     <Content Include="ueditor\lang\zh-cn\images\music.png" />
     <Content Include="ueditor\lang\zh-cn\images\upload.png" />
     <Content Include="ueditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="ueditor\net\Bin\Newtonsoft.Json.dll" />
+    <Content Include="ueditor\net\Bin\Newtonsoft.Json.pdb" />
+    <Content Include="ueditor\net\Bin\Newtonsoft.Json.xml" />
+    <Content Include="ueditor\net\net.sln" />
     <Content Include="ueditor\net\upload\image\20180616\6366473609641384059343875.png" />
     <Content Include="ueditor\net\upload\image\20180616\6366473627304894342211360.png" />
     <Content Include="ueditor\net\upload\image\20180616\6366473697006381048629202.png" />
@@ -688,25 +692,24 @@
     <Content Include="Views\GoTime\Index.cshtml" />
     <Content Include="Views\GoTime\add.cshtml" />
     <Content Include="Views\GoTime\Upd.cshtml" />
-    <Content Include="Views\Clock\Upd.cshtml" />
+    <Content Include="Views\Leave\Add.cshtml" />
+    <Content Include="Views\Leave\Edit.cshtml" />
+    <Content Include="Views\Leave\Index.cshtml" />
+    <Content Include="ueditor\net\.vs\net\v15\.suo" />
     <Content Include="ueditor\net\config.json" />
     <Content Include="ueditor\net\controller.ashx" />
+    <Content Include="ueditor\net\net.v12.suo" />
     <Content Include="ueditor\net\README.md" />
     <Content Include="ueditor\net\Web.config" />
     <Content Include="ueditor\third-party\jquery-1.10.2.min.map" />
     <Content Include="ueditor\third-party\video-js\font\vjs.eot" />
     <Content Include="ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="ueditor\third-party\video-js\font\vjs.woff" />
-    <Content Include="Views\Leave\Add.cshtml" />
-    <Content Include="Views\Leave\Edit.cshtml" />
-    <Content Include="Views\Leave\Index.cshtml" />
-    <Content Include="Views\Staff\StaffGetById.cshtml" />
+    <Content Include="Views\Login\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="ueditor\net\.vs\net\v15\" />
-    <Folder Include="ueditor\net\Bin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
