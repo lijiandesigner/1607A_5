@@ -33,10 +33,10 @@ namespace Model
         public string StaffPhoto { get; set; }
         [Display(Name ="所属部门")]
         [Required]
-        public int DepartId { get; set; }
+        public string DepartId { get; set; }
         [Display(Name ="所属职位")]
         [Required]
-        public int JobId { get; set; }
+        public string JobId { get; set; }
         [Display(Name ="入职时间")]
         [Required]
         public DateTime StartTime { get; set; }
