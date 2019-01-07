@@ -60,9 +60,9 @@ namespace MVC.Controllers
         public ActionResult xiala()
         {
             var s = DepartBLL.GetList();
-            ViewBag.list = new SelectList(s, "DepartId", "DepartName");
+            ViewBag.list = new SelectList(s, "DepartName", "DepartName");
             var p = jobBLL.GetList();
-            ViewBag.jobList = new SelectList(p, "JobId", "JobName");
+            ViewBag.jobList = new SelectList(p, "JobName", "JobName");
             return View();
         }
         /// <summary>
