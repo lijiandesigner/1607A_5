@@ -26,12 +26,25 @@
             </div>
         </div>
     }
+    <p>
+        @using (Html.BeginForm())
+        {
+            <span>员工ID：</span> <input id="Text1" type="text" name="staffid" />
+            <span>员工姓名：</span> <input id="Text1" type="text" name="name" />
+            <span>员工编号：</span> <input id="Text1" type="text" name="no" />
+            <span>员工部门：</span> @Html.DropDownList("bumenid", ViewBag.list as SelectList, "请选择")
+            <span>员工职位：</span> @Html.DropDownList("zhiid", ViewBag.jobList as SelectList, "请选择")
+            <input id="Submit1" type="submit" value="查询" />
+        }
 
-
+    </p>
     <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.StaffPhoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.StaffNo)
@@ -69,6 +82,9 @@
             <tr>
                 <td>
                     <img src="@item.StaffPhoto" alt="" style="width:100px;height:100px;border-radius:50%" />
+                </td>
+                <td>
+                    <span style="line-height:100px">@item.StaffId</span>
                 </td>
                 <td>
                     <span style="line-height:100px">@item.StaffNo</span>

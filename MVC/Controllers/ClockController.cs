@@ -43,7 +43,7 @@ namespace MVC.Controllers
             if (userno == "0916545" && password == "0916545")
             {
                 clock.StaffNO = userno;
-                clock.StaffName = "";
+                clock.StaffName = Session["UserName"].ToString();
                 //clock.StaffName = staffBLL.GetList().Where(m => m.StaffNo == userno).FirstOrDefault().StaffName;
                 clock.HitTime = DateTime.Now;
                 if (clock.HitTime.ToString().CompareTo(DateTime.Now.ToString("yyyy/MM/dd") + "19:00") == -1)
