@@ -8,11 +8,12 @@ using Model;
 
 namespace MVC.Controllers
 {
-   
+    
     public class LoginController : Controller
     {
         // GET: Login
         StaffBLL BLL = new StaffBLL();
+        JobBLL jobBLL = new JobBLL();
         public ActionResult Show()
         {
             return View();
@@ -25,11 +26,12 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Index(string username, string password)
         {
-            List<Staff> list = BLL.GetList().Where(s => s.StaffNo == password&&s.StaffName==username).ToList();
-            if (list.Count() > 0 )
+            List<Staff> list = BLL.GetList().Where(s => s.StaffNo == username).ToList();
+            if (list.Count() > 0 && username == password)
             {
-                Session["Path"] = password;
-                Session["UserName"] = username;
+                Session["Path"] = list[0].StaffPhoto;
+                Session["UserName"] = list[0].StaffName;
+                Session["StaffNo"] = list[0].StaffNo;
                 Response.Write("<script>alert('登录成功!');location.href='/Login/Show'</script>");
             }
             else

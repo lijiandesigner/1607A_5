@@ -25,16 +25,16 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AMGoTime)
+                @item.AMGoTime.ToString().Substring(item.AMGoTime.ToString().LastIndexOf(' '), item.AMGoTime.ToString().Length == 16 ? 5 : 6)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AMComeTime)
+                @item.AMComeTime.ToString().Substring(item.AMComeTime.ToString().LastIndexOf(' '), item.AMComeTime.ToString().Length == 16 ? 5 : 6)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PMGoTime)
+                @item.PMGoTime.ToString().Substring(item.PMGoTime.ToString().LastIndexOf(' '), item.PMGoTime.ToString().Length == 16 ? 5 : 6)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PMComeTime)
+                @item.PMComeTime.ToString().Substring(item.PMComeTime.ToString().LastIndexOf(' '), item.PMComeTime.ToString().Length == 16 ? 5 : 6)
             </td>
             <td>
                 @Html.ActionLink("修改时间", "Upd", new { id = item.GoTimeId })
