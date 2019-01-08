@@ -10,7 +10,7 @@
     <title>DASHGUM - FREE Bootstrap Admin Template</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="~/MasterPage/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
@@ -30,9 +30,26 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+        function clock() {
+            var curent = new Date();
+            var y, m, date, day, hs, ms, ss, theDateStr;
+            y = curent.getFullYear();
+            m = curent.getMonth() + 1;
+            date = curent.getDate();
+            day = curent.getDay();
+            hs = curent.getHours();
+            ms = curent.getMinutes();
+            ss = curent.getSeconds();
+            theDateStr = y + "年" + m + "月" + date + "日    星期" + day + "       " + hs + ":" + ms + ":" + ss;
+            $("#time").text(theDateStr);
+            window.setTimeout(clock, 1000);
+        }
+
+    </script>
 </head>
 
-<body>
+<body onload="clock()">
         <section id="container" style="height:100%">
             <!-- **********************************************************************************************************************************************************
         TOP BAR CONTENT & NOTIFICATIONS
@@ -45,13 +62,14 @@
                 <!--logo start-->
                 <a href="#" class="logo"><b>福瑞科技有限公司</b></a>
                 <!--logo end-->
-
-                <div class="top-menu">
+                <div class="sidebar-toggle-box" style="padding-left:100px;"><span id="time" style="font-size:17px;">*</span></div>
+                <div class="top-menu" >
                     <ul class="nav pull-right top-menu">
                         <li><a class="logout" href="/Login/Index">退出</a></li>
                     </ul>
                 </div>
             </header>
+            
             <!--header end-->
             <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
