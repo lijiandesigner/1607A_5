@@ -134,18 +134,19 @@ namespace MVC.Controllers
         /// <param name="staff"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult StaffUpdate(Staff staff)
+        public string StaffUpdate(Staff staff,HttpPostedFileBase StaffPhoto)
         {
+            staff.StaffNo = staff.StaffCard.Substring(staff.StaffCard.Length - 6);
             int s = bll.Upt(staff);
             if (s > 0)
             {
-                Response.Write("<script>alert('修改成功');location.href ='/Staff/Index'</script>");
+                return "<script>alert('修改成功');location.href ='/Staff/Index'</script>";
             }
             else
             {
-                Response.Write("<script>alert('修改失败')</script>");
+                return "<script>alert('修改失败');location.href ='/Staff/Index'</script>";
             }
-            return View();
+            
         }
     }
     public class job

@@ -15,7 +15,7 @@
 @*时间控件*@
 <script src="~/My97DatePicker/WdatePicker.js"></script>
 <script src="~/My97DatePicker/lang/zh-cn.js"></script>
-@using (Html.BeginForm("StaffUpdate", "Staff"))
+@using (Html.BeginForm("StaffUpdate", "Staff",FormMethod.Post,new { enctype="mulitpart/form-data"}))
 {
     @Html.AntiForgeryToken()
 
@@ -91,7 +91,13 @@
             </div>
         </div>
 
-
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -105,5 +111,6 @@
     @Html.ActionLink("查看信息", "Index")
 </div>
 <script>
-    $("#StaffPhoto").upload("/ueditor/net/","@Model.StaffPhoto");
+    $("#StaffPhoto").upload("/ueditor/net/", "@Model.StaffPhoto");
+    $("[name:StartTime]").hide();
 </script>
