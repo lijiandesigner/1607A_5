@@ -41,7 +41,7 @@ namespace MVC.Controllers
         /// <param name="NO"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult daka(string Name, string NO)
+        public string daka(string Name, string NO)
         {
             string jie = "";
             Clock clock = new Clock();
@@ -74,7 +74,7 @@ namespace MVC.Controllers
                 if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmGoTime)) <= 0)
                 {
                     //上班或下班时间
-                    clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + AmComeTime);
+                    clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + AmGoTime);
                     jie = $"{Name},上午上班打卡成功";
                     //打卡状态
                     clock.HitSate = jie;
@@ -85,12 +85,14 @@ namespace MVC.Controllers
                     //根据名称和当前日期查询打卡几次 进行判断
                     if (DaKaCiShu == 0)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + AmGoTime);
                         jie = $"{Name},上午上班打卡成功,已迟到";
                         //打卡状态
                         clock.HitSate = jie;
                     }
                     else if (DaKaCiShu == 1)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + AmComeTime);
                         jie = $"{Name},上午下班打卡成功,早退";
                         //打卡状态
                         clock.HitSate = jie;
@@ -102,18 +104,21 @@ namespace MVC.Controllers
                     //根据名称和当前日期查询打卡几次 进行判断
                     if (DaKaCiShu == 1)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + AmComeTime);
                         jie = $"{Name},上午下班打卡成功";
                         //打卡状态
                         clock.HitSate = jie;
                     }
                     else if (DaKaCiShu == 2)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PmGoTime);
                         jie = $"{Name},下午上班打卡成功";
                         //打卡状态
                         clock.HitSate = jie;
                     }
                     else if (DaKaCiShu == 0)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PmGoTime);
                         jie = $"{Name},下午上班打卡成功";
                         //打卡状态
                         clock.HitSate = jie;
@@ -123,18 +128,21 @@ namespace MVC.Controllers
                 {
                     if (DaKaCiShu == 2 || DaKaCiShu == 0)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PmGoTime);
                         jie = $"{Name},下午上班打卡成功,已迟到";
                         //打卡状态
                         clock.HitSate = jie;
                     }
                     else if (DaKaCiShu == 3)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
                         jie = $"{Name},下午下班打卡成功,早退";
                         //打卡状态
                         clock.HitSate = jie;
                     }
                     else if (DaKaCiShu == 1)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
                         //因为只打过一次不知道是上午下班卡还是下午上班卡
                         jie = $"{Name},下午上班打卡成功,迟到";
                         //打卡状态
@@ -145,17 +153,20 @@ namespace MVC.Controllers
                 {
                     if (DaKaCiShu == 3)
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
                         jie = $"{Name},下午下班打卡成功";
                         //打卡状态
                         clock.HitSate = jie;
                     }
                     else
                     {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
                         jie = $"{Name},旷工一天";
                         //打卡状态
                         clock.HitSate = jie;
                     }
                 }
+                bll.Add(clock);
             }
             else
             {
@@ -166,7 +177,7 @@ namespace MVC.Controllers
             //{
             //    jie = "打卡失败";
             //}
-            return View(jie);
+            return "<script>alert('" + jie + "');location.href = '/Login/Show';</script>";
         }
 
 
