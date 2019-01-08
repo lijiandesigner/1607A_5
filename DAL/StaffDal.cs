@@ -53,7 +53,6 @@ namespace DAL
         {
             return context.Staffs.Where(s => (s.JobId.Contains(t.JobId) && s.DepartId.Contains(t.DepartId)) || (s.StaffName.Contains(t.StaffName) && s.StaffNo.Contains(t.StaffNo))).ToList();
         }
-
         /// <summary>
         /// 反填方法
         /// </summary>
@@ -61,6 +60,7 @@ namespace DAL
         /// <returns></returns>
         public Staff GetT(int id)
         {
+            
            return  context.Staffs.Where(u => u.StaffId == id).FirstOrDefault();
         }
 
