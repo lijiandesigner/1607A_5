@@ -11,7 +11,7 @@ namespace MVC.Controllers
     {
         // GET: Clock
         ClockBll bll = new ClockBll();
-        public ActionResult Index(string FindBH, string FindName)
+        public ActionResult Index(string FindBH="", string FindName="")
         {
             List<Clock> list = bll.GetList();
             var linq = from a in list select a;

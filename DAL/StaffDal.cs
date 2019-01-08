@@ -51,7 +51,7 @@ namespace DAL
         /// <returns></returns>
         public List<Staff> GetList(Staff t)
         {
-            return context.Staffs.Where(s => s.StaffId == t.StaffId || s.StaffName.Contains(t.StaffName) || s.StaffNo.Contains(t.StaffNo) || s.StaffSex == t.StaffSex || s.StaffAge == t.StaffAge || s.StaffPhone == t.StaffPhone || s.DepartId == t.DepartId || s.JobId == t.JobId).ToList();
+            return context.Staffs.Where(s => (s.JobId.Contains(t.JobId) && s.DepartId.Contains(t.DepartId)) || (s.StaffName.Contains(t.StaffName) && s.StaffNo.Contains(t.StaffNo))).ToList();
         }
 
         /// <summary>

@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Model.GoTime>
 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <table class="table">
     <tr>
@@ -18,24 +21,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AMGoTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AMComeTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PMGoTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PMComeTime)
-        </td>
-        <td>
-            <input id="Button1" type="button" value="修改时间" onclick="location.href='GoTime/Upd/?id=@item.GoTimeId'" />
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AMGoTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AMComeTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PMGoTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PMComeTime)
+            </td>
+            <td>
+                @Html.ActionLink("修改时间", "Upd", new { id = item.GoTimeId })
+            </td>
+        </tr>
+    }
 
 </table>

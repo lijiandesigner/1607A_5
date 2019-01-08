@@ -30,7 +30,7 @@ namespace MVC.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="staff">根据员工id 员工姓名(模糊) 员工编号(模糊) 员工性别 员工年龄 员工电话 部门id 职位id</param>
+        /// <param name="staff">根据员工id 员工姓名(模糊) 员工编号(模糊)  部门 职位</param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult Index(string name="", string no="", string bumenid="", string zhiid="")
