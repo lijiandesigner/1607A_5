@@ -7,6 +7,7 @@ using BLL;
 using Model;
 namespace MVC.Controllers
 {
+    [Authorization]
     public class GoTimeController : Controller
     {
         // GET: GoTime

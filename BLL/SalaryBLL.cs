@@ -58,7 +58,7 @@ namespace BLL
 
         public int Upt(Salary t)
         {
-            throw new NotImplementedException();
+            return dal.Upt(t);
         }
     }
 }

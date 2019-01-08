@@ -1,0 +1,99 @@
+﻿@using MVC.Controllers
+@model IEnumerable<Model.Salary>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PunishMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AwardMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllowMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrueMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoneySate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobMoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PunishMoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AwardMoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveMoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AllowMoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrueMoney)
+                </td>
+                <td>
+                    @{SalaryState state = (SalaryState)int.Parse(item.MoneySate); }
+                    @if (state == SalaryState.待领取)
+                    {
+                        @Html.ActionLink("领取工资", "Edit", new { id = item.MoneyId })
+                    }
+                    else
+                    {
+                        <p>已领取</p>
+                    }
+                </td>
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.MoneyId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MoneyId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
