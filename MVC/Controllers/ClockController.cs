@@ -61,7 +61,8 @@ namespace MVC.Controllers
             //下午下班时间
             string PMGomeTime = go.GetList().FirstOrDefault().PMComeTime.ToString().Substring(9);
             //一天打卡次数
-            int DaKaCiShu = bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString().Contains(DateTime.Now.ToString("yyyy/MM/dd"))).Count();
+            int DaKaCiShu = 0;
+            DaKaCiShu = bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitSate.Contains(Name)).Count();
             //if (Name == s.ToString())
             //{
             var no = staffBLL.GetList().Where(m => m.StaffName.Equals(Name)).FirstOrDefault().StaffNo;
@@ -80,7 +81,7 @@ namespace MVC.Controllers
                     clock.HitSate = jie;
                 }
                 //上午上班时间之后 上午下班时间之前
-                else if (DateTime.Compare(Convert.ToDateTime(time),Convert.ToDateTime(AmGoTime))> 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmComeTime)) < 0)
+                else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmGoTime)) > 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmComeTime)) < 0)
                 {
                     //根据名称和当前日期查询打卡几次 进行判断
                     if (DaKaCiShu == 0)
@@ -96,6 +97,10 @@ namespace MVC.Controllers
                         jie = $"{Name},上午下班打卡成功,早退";
                         //打卡状态
                         clock.HitSate = jie;
+                    }
+                    else
+                    {
+                        jie = $"{Name},已打卡成功,不必再来";
                     }
                 }
                 //上午下班时间之后 下午上班时间之前
@@ -123,8 +128,12 @@ namespace MVC.Controllers
                         //打卡状态
                         clock.HitSate = jie;
                     }
+                    else
+                    {
+                        jie = $"{Name},已打卡成功,不必再来";
+                    }
                 }
-                else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PmGoTime)) > 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PMGomeTime))<0)
+                else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PmGoTime)) > 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PMGomeTime)) < 0)
                 {
                     if (DaKaCiShu == 2 || DaKaCiShu == 0)
                     {
@@ -148,6 +157,10 @@ namespace MVC.Controllers
                         //打卡状态
                         clock.HitSate = jie;
                     }
+                    else
+                    {
+                        jie = $"{Name},已打卡成功,不必再来";
+                    }
                 }
                 else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PMGomeTime)) >= 0)
                 {
@@ -166,7 +179,11 @@ namespace MVC.Controllers
                         clock.HitSate = jie;
                     }
                 }
-                bll.Add(clock);
+                //如果多次打卡不计入数据库 
+                if (!(jie == $"{Name},已打卡成功,不必再来"))
+                {
+                    bll.Add(clock);
+                }
             }
             else
             {
