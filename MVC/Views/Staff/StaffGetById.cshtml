@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>StaffGetById</h2>
+<h2>信息修改</h2>
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 @*图片上传文件*@
@@ -20,7 +20,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Staff</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.StaffId)
@@ -79,7 +78,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DepartId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DepartId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.DepartId, ViewBag.list as SelectList,"请选择")
                 @Html.ValidationMessageFor(model => model.DepartId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -87,7 +86,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.JobId, ViewBag.jobList as SelectList,"请选择")
                 @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -105,4 +104,6 @@
 <div>
     @Html.ActionLink("查看信息", "Index")
 </div>
-
+<script>
+    $("#StaffPhoto").upload("/ueditor/net/","@Model.StaffPhoto");
+</script>
