@@ -5,8 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using Model;
 using BLL;
+
 namespace MVC.Controllers
 {
+    [Authorization]
     public class ClockController : Controller
     {
         // GET: Clock

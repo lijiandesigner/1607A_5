@@ -8,6 +8,7 @@ using Model;
 
 namespace MVC.Controllers
 {
+    [Authorization]
     public class JobController : Controller
     {
         JobBLL bll = new JobBLL();

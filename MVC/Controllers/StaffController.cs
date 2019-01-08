@@ -8,6 +8,7 @@ using Model;
 
 namespace MVC.Controllers
 {
+    [Authorization]
     public class StaffController : Controller
     {
         StaffBLL bll = new StaffBLL();
