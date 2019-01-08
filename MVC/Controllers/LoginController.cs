@@ -8,6 +8,7 @@ using Model;
 
 namespace MVC.Controllers
 {
+    [Authorization]
     public class LoginController : Controller
     {
         // GET: Login

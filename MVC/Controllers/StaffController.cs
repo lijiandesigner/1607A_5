@@ -8,6 +8,7 @@ using Model;
 
 namespace MVC.Controllers
 {
+    [Authorization]
     public class StaffController : Controller
     {
         StaffBLL bll = new StaffBLL();
@@ -33,11 +34,10 @@ namespace MVC.Controllers
         /// <param name="staff">根据员工id 员工姓名(模糊) 员工编号(模糊) 员工性别 员工年龄 员工电话 部门id 职位id</param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Index(int staffid=0, string name="", string no="", string bumenid="", string zhiid="")
+        public ActionResult Index(string name="", string no="", string bumenid="", string zhiid="")
         {
             xiala();
             Staff st = new Staff();
-            st.StaffId = staffid;
             st.StaffName = name;
             st.StaffNo = no;
             st.DepartId = bumenid;
