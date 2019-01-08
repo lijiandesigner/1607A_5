@@ -68,7 +68,8 @@ namespace DAL
         /// <returns></returns>
         public int Upt(Salary t)
         {
-            throw new NotImplementedException();
+            myc.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            return myc.SaveChanges();
         }
     }
 }
