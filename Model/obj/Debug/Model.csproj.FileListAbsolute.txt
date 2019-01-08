@@ -21,3 +21,9 @@ C:\Users\Administrator\Source\Repos\1607A_52\Model\obj\Debug\Model.dll
 C:\Users\Administrator\Source\Repos\1607A_52\Model\obj\Debug\Model.pdb
 D:\项目\Model\obj\Debug\Model.csprojAssemblyReference.cache
 F:\专业\小实训1\上海福瑞科技Git项目\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\项目第二版\Model\bin\Debug\Model.dll
+D:\项目第二版\Model\bin\Debug\Model.pdb
+D:\项目第二版\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\项目第二版\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\项目第二版\Model\obj\Debug\Model.dll
+D:\项目第二版\Model\obj\Debug\Model.pdb
