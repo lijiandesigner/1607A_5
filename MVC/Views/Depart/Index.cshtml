@@ -36,9 +36,8 @@
             @Html.DisplayFor(modelItem => item.CreateTime)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DepartId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DepartId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.DepartId }, new { onclick= "return confirm('确认删除吗?')"})
+            @Html.ActionLink("修改", "Edit", new { id=item.DepartId }) |
+            @Html.ActionLink("删除", "Delete", new { id = item.DepartId }, new { onclick= "return confirm('确认删除吗?')"})
         </td>
     </tr>
 }
