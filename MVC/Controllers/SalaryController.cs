@@ -23,7 +23,8 @@ namespace MVC.Controllers
             List<Job> jobs = jobBLL.GetList();
             for (int i = 0; i < list.Count(); i++)
             {
-                list[i].PunishMoney = clockBll.GetList().Where(s => s.StaffNO == staff[i].StaffNo && s.HitSate.Contains("迟到")).Count() * float.Parse(50.0.ToString());
+                List<Clock> clocks = clockBll.GetList().Where(s => s.StaffNO == list[i].StaffNo).ToList();
+                list[i].PunishMoney = clocks.Where(s => s.HitSate.Contains("迟到") || s.HitSate.Contains("早退")).Count() * float.Parse(50.0.ToString());
                 list[i].AwardMoney = 0;
                 list[i].LeaveMoney = 0;
                 list[i].AllowMoney = 0;
@@ -35,16 +36,17 @@ namespace MVC.Controllers
         public ActionResult Edit(int id)
         {
             Salary salary = salaryBLL.GetList().Where(s => s.MoneyId == id).FirstOrDefault();
+            Staff staff = staffBLL.GetList().Where(s => s.StaffNo == salary.StaffNo).FirstOrDefault();
             if (salary.StaffNo != Session["StaffNo"].ToString())
             {
-                Response.Write("<script>alert('这不是你的工资!请不要乱领!')</script>");
-                return Redirect("/Salary/Index");
-            }
-            else
-            {
-                return View(salary);
-            }
+                Response.Write("<script>alert('这不是你的工资!请不要乱领!');location.href='/Salary/Index';</script>");
 
+            }
+            else if (DateTime.Compare(staff.StartTime, DateTime.Now) < 30)
+            {
+                Response.Write("<script>alert('不到领取工资日期!');location.href='/Salary/Index';</script>");
+            }
+            return View(salary);
         }
         [HttpPost]
         public ActionResult Edit(Salary salary)
@@ -53,14 +55,9 @@ namespace MVC.Controllers
             int result = salaryBLL.Upt(salary);
             if (result > 0)
             {
-                Response.Write("<script>alert('领取成功!')</script>");
-                return Redirect("/Salary/Index");
+                Response.Write("<script>alert('领取成功!');location.href='/Salary/Index';</script>");
             }
-            else
-            {
-                return View();
-            }
-
+            return View();
         }
     }
     public enum SalaryState
