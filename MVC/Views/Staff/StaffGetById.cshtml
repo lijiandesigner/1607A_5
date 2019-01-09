@@ -79,7 +79,7 @@
             @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="Select1" name="JobId">
-                    <option value="">请选择</option>
+                    <option value="">@Model.JobId</option>
                 </select>
                 @*@Html.DropDownListFor(model => model.JobId, ViewBag.jobList as SelectList,"请选择")*@
                 @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
@@ -107,7 +107,7 @@
 </div>
 <script>
     $("#StaffPhoto").upload("/ueditor/net/", "@Model.StaffPhoto");
-    $("#StartTime").hide();
+    $("#StartTime").attr("disabled", true);//禁用入职时间
 
     $("#DepartId").change(function () {
         var sel = $("#DepartId").val();
@@ -118,6 +118,7 @@
             dataType: "json",
             success: function (data) {
                 $("#Select1").empty();
+                $("#Select1").append(op);
                 $(data).each(function () {
                     var op = '<option value="' + this.JobName + '">' + this.JobName + '</option>';
                     $("#Select1").append(op);
