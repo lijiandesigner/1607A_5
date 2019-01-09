@@ -70,12 +70,13 @@ namespace MVC.Controllers
             //if (Name == s.ToString())
             //{
             var no = staffBLL.GetList().Where(m => m.StaffName.Equals(Name)).FirstOrDefault().StaffNo;
+
             if (no == NO)
             {
                 clock.StaffNO = NO;
                 clock.StaffName = Name;
                 clock.HitTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + time);
-                //当打卡时间不大于上午打卡时间 没错
+                //上午上班之前
                 if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmGoTime)) <= 0)
                 {
                     //上班或下班时间
@@ -85,10 +86,10 @@ namespace MVC.Controllers
                     clock.HitSate = jie;
                     if (DaKaCiShu >= 1)
                     {
-                        jie = $"{Name},,已打卡成功,不必再来";
+                        jie = $"{Name},已打卡成功,不必再来";
                     }
                 }
-                //上午上班时间之后 上午下班时间之前
+                //上午上班期间
                 else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmGoTime)) > 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmComeTime)) < 0)
                 {
                     //根据名称和当前日期查询打卡几次 进行判断
@@ -109,81 +110,164 @@ namespace MVC.Controllers
                         jie = $"{Name},已打卡成功,不必再来";
                     }
                 }
-                //上午下班时间之后 下午上班时间之前
+                //午休期间
                 else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmComeTime)) >= 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PmGoTime)) <= 0)
                 {
-                    
-                    //根据名称和当前日期查询打卡几次 进行判断
-                    if (DaKaCiShu == 1)
+                    if (DaKaCiShu == 0)
+                    {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
+                        jie = $"{Name},上午没有上班";
+                        clock.HitSate = jie;
+                        bll.Add(clock);
+                        jie = $"{Name},下午上班打卡成功";
+                    }
+                    else if (DaKaCiShu == 1)
                     {
                         clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + AmComeTime);
                         jie = $"{Name},上午下班打卡成功";
-                        //打卡状态
                     }
-                    else if (DaKaCiShu == 2 || DaKaCiShu == 0)
+                    else if (DaKaCiShu == 2)
                     {
-                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PmGoTime);
-                        if (DaKaCiShu == 0)
+                        if (!(bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("没有上班")).Count() == 1))
                         {
-                            jie = $"{Name},上午没有上班";
-                            clock.HitSate = jie;
-                            bll.Add(clock);
-                        }
-                        if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("没有上班")).Count() > 0))
-                        {
-                            if((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t).Count() == 1))
+                            clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
                             jie = $"{Name},下午上班打卡成功";
                         }
-                        //打卡状态
+                        else
+                        {
+                            jie = $"{Name},已打卡成功,不必再来";
+                        }
                     }
                     else
                     {
-                        jie = $"{Name},已打卡成功,不必再来";
+                        jie = $"{Name},打卡成功,不必再来";
                     }
+
+
+                    #region
+                    //根据名称和当前日期查询打卡几次 进行判断
+                    //if (DaKaCiShu == 1)
+                    //{
+                    //    clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + AmComeTime);
+                    //    jie = $"{Name},上午下班打卡成功";
+                    //    //打卡状态
+                    //}
+                    //else if (DaKaCiShu == 2 || DaKaCiShu == 0)
+                    //{
+                    //    clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PmGoTime);
+                    //    if (DaKaCiShu == 0)
+                    //    {
+                    //        jie = $"{Name},上午没有上班";
+                    //        clock.HitSate = jie;
+                    //        bll.Add(clock);
+                    //    }
+                    //    if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("没有上班")).Count() == 1))
+                    //    {
+                    //        if((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t).Count() == 1))
+                    //        jie = $"{Name},下午上班打卡成功";
+                    //    }
+                    //    if (DaKaCiShu == 2)
+                    //    {
+                    //        jie = $"{Name},下午上班打卡成功";
+                    //    }
+                    //    else
+                    //    {
+                    //        jie = $"{Name},已打卡成功,不必再来";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    jie = $"{Name},已打卡成功,不必再来";
+                    //}
+                    #endregion
                 }
+                //下午上班期间
                 else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PmGoTime)) > 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PMGomeTime)) < 0)
                 {
-                    if (DaKaCiShu == 2 || DaKaCiShu == 0)
+                    if (DaKaCiShu == 0)
                     {
-                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PmGoTime);
-                        if (DaKaCiShu == 0)
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
+                        jie = $"{Name},上午没有上班";
+                        clock.HitSate = jie;
+                        bll.Add(clock);
+                        jie = $"{Name},下午上班打卡成功,已迟到";
+                    }
+                    else if (DaKaCiShu == 1)
+                    {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + AmComeTime);
+                        jie = $"{Name},上午下班打卡成功";
+                        clock.HitSate = jie;
+                        bll.Add(clock);
+                        jie = $"{Name},下午上班打卡成功,已迟到";
+                    }
+                    else if (DaKaCiShu == 2)
+                    {
+
+                        if (!(bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("没有上班")).Count() == 1))
                         {
-                            jie = $"{Name},上午没有上班";
-                            clock.HitSate = jie;
-                            bll.Add(clock);
+                            clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
+                            jie = $"{Name},下午下班打卡成工,已早退";
                         }
-                        if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t).Count() == 2))
+                        else
                         {
-                            jie = $"{Name},下午下班打卡成功已,早退";
+                            clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PmGoTime);
+                            jie = $"{Name},下午上班打卡成功,已迟到";
                         }
-                        if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("没有上班")).Count() > 0))
-                        {
-                            if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t).Count() == 1))
-                                jie = $"{Name},下午上班打卡成功,已迟到";
-                        }
-                        //打卡状态
                     }
                     else if (DaKaCiShu == 3)
                     {
                         clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
-                        jie = $"{Name},下午下班打卡成功,已早退";
-                        //打卡状态
-                    }
-                    else if (DaKaCiShu == 1)
-                    {
-                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
-                        jie = $"{Name},上午下班打卡成功";
-                        clock.HitSate = jie;
-                        bll.Add(clock);
-                        //因为只打过一次不知道是上午下班卡还是下午上班卡
-                        jie = $"{Name},下午上班打卡成功,已迟到";
-                        //打卡状态
+                        jie = $"{Name},下午下班打卡成工,已早退";
                     }
                     else
                     {
                         jie = $"{Name},已打卡成功,不必再来";
                     }
+                    #region
+                    //if (DaKaCiShu == 2 || DaKaCiShu == 0)
+                    //{
+                    //    clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PmGoTime);
+                    //    if (DaKaCiShu == 0)
+                    //    {
+                    //        jie = $"{Name},上午没有上班";
+                    //        clock.HitSate = jie;
+                    //        bll.Add(clock);
+                    //    }
+                    //    if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t).Count() == 2))
+                    //    {
+                    //        jie = $"{Name},下午下班打卡成功已,早退";
+                    //    }
+                    //    if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("没有上班")).Count() > 0))
+                    //    {
+                    //        if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t).Count() == 1))
+                    //            jie = $"{Name},下午上班打卡成功,已迟到";
+                    //    }
+
+                    //}
+                    //else if (DaKaCiShu == 3)
+                    //{
+                    //    if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("下午下班打卡成功")).Count() > 0))
+                    //        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
+                    //    jie = $"{Name},下午下班打卡成功,已早退";
+                    //    //打卡状态
+                    //}
+                    //else if (DaKaCiShu == 1)
+                    //{
+                    //    clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
+                    //    jie = $"{Name},上午下班打卡成功";
+                    //    clock.HitSate = jie;
+                    //    bll.Add(clock);
+                    //    //因为只打过一次不知道是上午下班卡还是下午上班卡
+                    //    jie = $"{Name},下午上班打卡成功,已迟到";
+                    //    //打卡状态
+                    //}
+                    //else
+                    //{
+                    //    jie = $"{Name},已打卡成功,不必再来";
+                    //}
+                    #endregion
                 }
+                //下午下班之后
                 else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PMGomeTime)) >= 0)
                 {
                     if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("旷工一天")).Count() > 0))
@@ -225,7 +309,7 @@ namespace MVC.Controllers
                                 {
                                     jie = $"{Name},下午没有上班";
                                 }
-                                else if((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("下午上班打卡成功")).Count() > 0))
+                                else if ((bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitTime.ToString("yyyy/MM/dd") == t && m.HitSate.Contains("下午上班打卡成功")).Count() > 0))
                                 {
                                     jie = $"{Name},下午下班打卡成功";
                                 }
@@ -239,7 +323,7 @@ namespace MVC.Controllers
                         }
                         else
                         {
-                            jie == $"{Name},已打卡成功,不必再来"
+                            jie = $"{Name},已打卡成功,不必再来";
                         }
                     }
                 }
