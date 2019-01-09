@@ -26,8 +26,8 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Index(string username, string password)
         {
-            List<Staff> list = BLL.GetList().Where(s => s.StaffNo == username).ToList();
-            if (list.Count() > 0 && username == password)
+            List<Staff> list = BLL.GetList().Where(s => s.StaffNo == password&&s.StaffName==username).ToList();
+            if (list.Count() > 0 )
             {
                 Session["Path"] = list[0].StaffPhoto;
                 Session["UserName"] = list[0].StaffName;
