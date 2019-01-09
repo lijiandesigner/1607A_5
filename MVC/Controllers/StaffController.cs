@@ -31,7 +31,7 @@ namespace MVC.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="staff">根据员工id 员工姓名(模糊) 员工编号(模糊) 员工性别 员工年龄 员工电话 部门id 职位id</param>
+        /// <param name="staff">根据员工id 员工姓名(模糊) 员工编号(模糊)  部门 职位</param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult Index(string name="", string no="", string bumenid="", string zhiid="")
@@ -134,18 +134,19 @@ namespace MVC.Controllers
         /// <param name="staff"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult StaffUpdate(Staff staff)
+        public string StaffUpdate(Staff staff)
         {
+            staff.StaffNo = staff.StaffCard.Substring(staff.StaffCard.Length - 6);
             int s = bll.Upt(staff);
             if (s > 0)
             {
-                Response.Write("<script>alert('修改成功');location.href ='/Staff/Index'</script>");
+                return "<script>alert('修改成功');location.href ='/Staff/Index'</script>";
             }
             else
             {
-                Response.Write("<script>alert('修改失败')</script>");
+                return "<script>alert('修改失败');location.href ='/Staff/Index'</script>";
             }
-            return View();
+            
         }
     }
     public class job

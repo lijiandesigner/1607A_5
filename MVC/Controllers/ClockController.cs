@@ -13,7 +13,7 @@ namespace MVC.Controllers
     {
         // GET: Clock
         ClockBll bll = new ClockBll();
-        public ActionResult Index(string FindBH, string FindName)
+        public ActionResult Index(string FindBH="", string FindName="")
         {
             List<Clock> list = bll.GetList();
             var linq = from a in list select a;
@@ -81,6 +81,10 @@ namespace MVC.Controllers
                     jie = $"{Name},上午上班打卡成功";
                     //打卡状态
                     clock.HitSate = jie;
+                    if (DaKaCiShu == 1)
+                    {
+                        jie = $"{Name},,已打卡成功,不必再来";
+                    }
                 }
                 //上午上班时间之后 上午下班时间之前
                 else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmGoTime)) > 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmComeTime)) < 0)
@@ -106,7 +110,7 @@ namespace MVC.Controllers
                     }
                 }
                 //上午下班时间之后 下午上班时间之前
-                else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmComeTime)) >= 0 || DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PmGoTime)) <= 0)
+                else if (DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(AmComeTime)) >= 0 && DateTime.Compare(Convert.ToDateTime(time), Convert.ToDateTime(PmGoTime)) <= 0)
                 {
                     //根据名称和当前日期查询打卡几次 进行判断
                     if (DaKaCiShu == 1)
@@ -172,6 +176,23 @@ namespace MVC.Controllers
                         jie = $"{Name},下午下班打卡成功";
                         //打卡状态
                         clock.HitSate = jie;
+                    }
+                    else if (DaKaCiShu == 0)
+                    {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
+                        jie = $"{Name},旷工一天";
+                        //打卡状态
+                        clock.HitSate = jie;
+                    }
+                    else if (DaKaCiShu < 3)
+                    {
+                        clock.Hours = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " " + PMGomeTime);
+                        jie = $"{Name},下午没有上班";
+                        clock.HitSate = jie;
+                    }
+                    else if (DaKaCiShu >= 4)
+                    {
+                        jie = $"{Name},已打卡成功,不必再来";
                     }
                     else
                     {
