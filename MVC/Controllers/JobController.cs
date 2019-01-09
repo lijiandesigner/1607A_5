@@ -30,6 +30,11 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult JobAdd()
         {
+            xiala();
+            return View();
+        }
+        public ActionResult xiala()
+        {
             DepartBLL dbll = new DepartBLL();
             List<Depart> list = dbll.GetList();
             ViewBag.list = new SelectList(list, "DepartName", "DepartName");

@@ -108,7 +108,7 @@
 }
 
 <div>
-    @Html.ActionLink("查看信息", "Index")
+    <input id="Button1" type="button" value="员工信息" class="btn btn-default" onclick="location.href='/Staff/Index'" />
 </div>
 <script>
     $("#StaffPhoto").upload("/ueditor/net/", "@Model.StaffPhoto");

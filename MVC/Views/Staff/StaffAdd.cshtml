@@ -31,7 +31,7 @@
         @Html.AntiForgeryToken()
         
     <div class="form-horizontal">
-        <h4>Staff</h4>
+        <h4>新增员工</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -110,7 +110,7 @@
     }
     
     <div>
-        @Html.ActionLink("查看", "Index")
+        <input id="Button1" type="button" value="员工信息" class="btn btn-default" onclick="location.href='/Staff/Index'" />
     </div>
 </body>
 </html>
