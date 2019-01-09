@@ -56,9 +56,9 @@ namespace MVC.Controllers
             int result = BLL.Upt(depart);
             if (result > 0)
             {
-                Response.Write("<script>alert('修改部门成功')</script>");
+                Response.Write("<script>alert('修改部门成功')</script>;location.href='/Depart/Index';");
             }
-            return Redirect("/Depart/Index");
+            return View();
         }
     }
 }
