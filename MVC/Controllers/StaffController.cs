@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using Model;
+using Newtonsoft.Json;
 
 namespace MVC.Controllers
 {
@@ -126,6 +127,15 @@ namespace MVC.Controllers
         {
             xiala();
             return View(bll.GetT(id));
+        }
+        public string Sel(string sel)
+        {
+            
+            var list= jobBLL.GetList();
+            var ss = from s in list
+                     where s.JobName.Contains(sel.Substring(0,sel.LastIndexOf("部")))
+                     select s;
+            return JsonConvert.SerializeObject(ss);
         }
 
         /// <summary>

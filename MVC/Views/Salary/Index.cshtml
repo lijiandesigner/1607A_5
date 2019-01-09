@@ -10,10 +10,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <title>Index</title>
 </head>
 <body>
-    @using (Html.BeginForm("Index","Salary","post"))
+    @using (Html.BeginForm("Index", "Salary", "post"))
     {
         <table class="table">
             <tr>
@@ -61,6 +63,10 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PunishMoney)
+                        @if (item.PunishMoney > 0)
+                        {
+                            <a href="" onclick="Look('@item.StaffNo')">查看记录</a>
+                        }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.AwardMoney)
@@ -91,3 +97,13 @@
     }
 </body>
 </html>
+<script>
+    function Look(id) {
+        $.ajax({
+            url: "/Salary/Look/?id=" + id,
+            success: function (data) {
+                alert(data)
+            }
+        })
+    }
+</script>
