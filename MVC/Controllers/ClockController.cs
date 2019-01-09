@@ -64,7 +64,7 @@ namespace MVC.Controllers
             string PMGomeTime = go.GetList().FirstOrDefault().PMComeTime.ToString().Substring(9);
             //一天打卡次数
             int DaKaCiShu = 0;
-            DaKaCiShu = bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitSate.Contains(Name)).Count();
+            DaKaCiShu = bll.GetList().Where(m => m.StaffName.Equals(Name) && m.HitSate.Contains(DateTime.Now.ToString("yyyy/MM/dd"))).Count();
             //if (Name == s.ToString())
             //{
             var no = staffBLL.GetList().Where(m => m.StaffName.Equals(Name)).FirstOrDefault().StaffNo;
@@ -81,7 +81,7 @@ namespace MVC.Controllers
                     jie = $"{Name},上午上班打卡成功";
                     //打卡状态
                     clock.HitSate = jie;
-                    if (DaKaCiShu == 1)
+                    if (DaKaCiShu >= 1)
                     {
                         jie = $"{Name},,已打卡成功,不必再来";
                     }

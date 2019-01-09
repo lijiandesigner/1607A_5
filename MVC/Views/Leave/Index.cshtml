@@ -83,11 +83,10 @@
                     }
                     else
                     {
-                        <a href="#">等待审批人审批</a>
+                        <p>等待审批人审批</p>
                     }
                 </td>
                 <td>
-                    @Html.ActionLink("详情", "Details", new { id = item.LeaveId }) |
                     @Html.ActionLink("撤销", "Delete", new { id = item.LeaveId })
                 </td>
             </tr>

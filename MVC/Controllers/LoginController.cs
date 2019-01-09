@@ -8,12 +8,11 @@ using Model;
 
 namespace MVC.Controllers
 {
-    
+
     public class LoginController : Controller
     {
         // GET: Login
         StaffBLL BLL = new StaffBLL();
-        JobBLL jobBLL = new JobBLL();
         public ActionResult Show()
         {
             return View();
@@ -26,8 +25,8 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Index(string username, string password)
         {
-            List<Staff> list = BLL.GetList().Where(s => s.StaffNo == password&&s.StaffName==username).ToList();
-            if (list.Count() > 0 )
+            List<Staff> list = BLL.GetList().Where(s => s.StaffNo == password && s.StaffName == username).ToList();
+            if (list.Count() > 0)
             {
                 Session["Path"] = list[0].StaffPhoto;
                 Session["UserName"] = list[0].StaffName;
@@ -36,7 +35,14 @@ namespace MVC.Controllers
             }
             else
             {
-                Response.Write("<script>alert('登录失败!员工号或密码失败')</script>");
+                if (BLL.GetList().Where(s => s.StaffName == username).Count() < 1)
+                {
+                    Response.Write("<script>alert('登录失败!本公司无此员工')</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('登录失败!员工工号错误')</script>");
+                }
             }
             return View();
         }

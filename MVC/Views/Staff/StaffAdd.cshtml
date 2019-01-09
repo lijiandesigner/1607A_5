@@ -4,34 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>员工入职</title>
-
-
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-
-    @*图片上传文件*@
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/ueditor/jquery-form.js"></script>
-    <script src="~/ueditor/ueditor-upload.js"></script>
-    @*时间控件*@
-    <script src="~/My97DatePicker/WdatePicker.js"></script>
-    <script src="~/My97DatePicker/lang/zh-cn.js"></script>
-
-</head>
-<body>
     @using (Html.BeginForm()) 
     {
-        @Html.AntiForgeryToken()
         
     <div class="form-horizontal">
-        <h4>新增员工</h4>
+        <h4>员工入职</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -89,7 +67,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.JobId, ViewBag.jobList as SelectList, "请选择")
+                <select id="Select1" name="JobId">
+                    <option value="">请选择</option>
+                </select>
+                
+                @*@Html.DropDownListFor(m => m.JobId, ViewBag.jobList as SelectList, "请选择")*@
                 @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -110,11 +92,29 @@
     }
     
     <div>
-        <input id="Button1" type="button" value="员工信息" class="btn btn-default" onclick="location.href='/Staff/Index'" />
+        @Html.ActionLink("查看", "Index")
     </div>
-</body>
-</html>
+
 <script>
     //图片上传
     $("#StaffPhoto").upload();
+
+    //二级联动
+    $("#DepartId").change(function () {
+        var sel = $("#DepartId").val();
+        $.ajax({
+            type: "get",
+            url: "/Staff/Sel",
+            data: { sel: sel },
+            dataType: "json",
+            success: function (data) {
+                $("#Select1").empty();
+                $(data).each(function () {
+                    var op = '<option value="' + this.JobName + '">' + this.JobName + '</option>';
+                    $("#Select1").append(op);
+                })
+            }
+
+        })
+    });
 </script>
