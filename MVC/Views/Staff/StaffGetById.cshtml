@@ -6,15 +6,7 @@
 }
 
 <h2>信息修改</h2>
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-@*图片上传文件*@
-<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<script src="~/ueditor/jquery-form.js"></script>
-<script src="~/ueditor/ueditor-upload.js"></script>
-@*时间控件*@
-<script src="~/My97DatePicker/WdatePicker.js"></script>
-<script src="~/My97DatePicker/lang/zh-cn.js"></script>
+
 @using (Html.BeginForm("StaffUpdate", "Staff"))
 {
     @Html.AntiForgeryToken()
@@ -86,7 +78,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.JobId, ViewBag.jobList as SelectList,"请选择")
+                <select id="Select1" name="JobId">
+                    <option value="">请选择</option>
+                </select>
+                @*@Html.DropDownListFor(model => model.JobId, ViewBag.jobList as SelectList,"请选择")*@
                 @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -112,5 +107,24 @@
 </div>
 <script>
     $("#StaffPhoto").upload("/ueditor/net/", "@Model.StaffPhoto");
-    $("[name:StartTime]").hide();
+    $("#StartTime").hide();
+
+    $("#DepartId").change(function () {
+        var sel = $("#DepartId").val();
+        $.ajax({
+            type: "get",
+            url: "/Staff/Sel",
+            data: { sel: sel },
+            dataType: "json",
+            success: function (data) {
+                $("#Select1").empty();
+                $(data).each(function () {
+                    var op = '<option value="' + this.JobName + '">' + this.JobName + '</option>';
+                    $("#Select1").append(op);
+                })
+            }
+
+        })
+    });
+
 </script>
