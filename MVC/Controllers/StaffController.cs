@@ -134,7 +134,7 @@ namespace MVC.Controllers
         /// <param name="staff"></param>
         /// <returns></returns>
         [HttpPost]
-        public string StaffUpdate(Staff staff,HttpPostedFileBase StaffPhoto)
+        public string StaffUpdate(Staff staff)
         {
             staff.StaffNo = staff.StaffCard.Substring(staff.StaffCard.Length - 6);
             int s = bll.Upt(staff);
