@@ -18,13 +18,17 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            List<Salary> list = salaryBLL.GetList();
+            List<Salary> list = new List<Salary>();
             List<Staff> staff = staffBLL.GetList();
+            foreach (var item in staff)
+            {
+                list.Add(salaryBLL.GetList().Where(s=>s.StaffNo==item.StaffNo).FirstOrDefault());
+            }
             List<Job> jobs = jobBLL.GetList();
             for (int i = 0; i < list.Count(); i++)
             {
                 List<Clock> clocks = clockBll.GetList().Where(s => s.StaffNO == list[i].StaffNo).ToList();
-                list[i].PunishMoney = clocks.Where(s => s.HitSate.Contains("迟到") || s.HitSate.Contains("早退")).Count() * float.Parse(50.0.ToString());
+                list[i].PunishMoney = clocks.Where(s => s.HitSate.Contains("迟到") || s.HitSate.Contains("早退")).Count() * float.Parse(50.0.ToString()) + clocks.Where(s => s.HitSate.Contains("没有上班")).Count() * float.Parse(100.0.ToString()) + clocks.Where(s => s.HitSate.Contains("旷工")).Count() * float.Parse(300.0.ToString());
                 list[i].AwardMoney = 0;
                 list[i].LeaveMoney = 0;
                 list[i].AllowMoney = 0;
@@ -58,6 +62,16 @@ namespace MVC.Controllers
                 Response.Write("<script>alert('领取成功!');location.href='/Salary/Index';</script>");
             }
             return View();
+        }
+        public string Look(string id)
+        {
+            List<Clock> list = clockBll.GetList().Where(s => s.StaffNO==id).ToList();
+            string result = "罚款原因:\n";
+            foreach (var item in list)
+            {
+                result += $"{item.HitTime}:{item.HitSate}\n";
+            }
+            return result;
         }
     }
     public enum SalaryState
