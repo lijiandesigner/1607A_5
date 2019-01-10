@@ -23,7 +23,7 @@
 <h2>部门信息</h2>
 
 <p>
-    @Html.ActionLink("创建新的部门", "Add")
+    <input id="Button1" type="button" value="新增部门" class="btn btn-default" onclick="location.href='/Depart/Add'" />
 </p>
 <table class="table">
     <tr>
@@ -51,8 +51,8 @@
             @Html.DisplayFor(modelItem => item.CreateTime)
         </td>
         <td>
-            @Html.ActionLink("修改", "Edit", new { id=item.DepartId }) |
-            @Html.ActionLink("删除", "Delete", new { id = item.DepartId }, new { onclick= "return confirm('确认删除吗?')"})
+            <input id="Button1" type="button" value="修改" class="btn btn-default" onclick="location.href='/Depart/Edit/?id=@item.DepartId'" />
+            <input id="Button1" type="button" value="删除" class="btn btn-default" onclick="location.href='/Depart/Delete/?id=@item.DepartId'" />
         </td>
     </tr>
 }

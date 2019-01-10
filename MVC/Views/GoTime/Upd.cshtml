@@ -26,7 +26,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>GoTime</h4>
+        <h4>修改时间</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -74,5 +74,5 @@
 }
 
 <div>
-    @Html.ActionLink("时间表", "Index")
+    <input id="Button1" type="button" value="时间表" class="btn btn-default" onclick="location.href='/GoTime/Index'" />
 </div>
