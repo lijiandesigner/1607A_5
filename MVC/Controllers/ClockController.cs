@@ -87,7 +87,7 @@ namespace MVC.Controllers
                     clock.HitSate = jie;
                     if (DaKaCiShu >= 1)
                     {
-                        jie = $"{Name},,已打卡成功,不必再来";
+                        jie = $"{Name},已打卡成功,不必再来";
                     }
                 }
                 //上午上班时间之后 上午下班时间之前
