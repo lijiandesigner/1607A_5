@@ -4,12 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
     @using (Html.BeginForm()) 
     {
         
     <div class="form-horizontal">
-        <h4>员工入职</h4>
+        <h4>Staff</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -67,11 +66,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select id="Select1" name="JobId">
-                    <option value="">请选择</option>
-                </select>
-                
-                @*@Html.DropDownListFor(m => m.JobId, ViewBag.jobList as SelectList, "请选择")*@
+                @Html.DropDownListFor(m => m.JobId, ViewBag.jobList as SelectList, "请选择")
                 @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -98,23 +93,4 @@
 <script>
     //图片上传
     $("#StaffPhoto").upload();
-
-    //二级联动
-    $("#DepartId").change(function () {
-        var sel = $("#DepartId").val();
-        $.ajax({
-            type: "get",
-            url: "/Staff/Sel",
-            data: { sel: sel },
-            dataType: "json",
-            success: function (data) {
-                $("#Select1").empty();
-                $(data).each(function () {
-                    var op = '<option value="' + this.JobName + '">' + this.JobName + '</option>';
-                    $("#Select1").append(op);
-                })
-            }
-
-        })
-    });
 </script>
