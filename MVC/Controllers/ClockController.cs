@@ -13,8 +13,10 @@ namespace MVC.Controllers
     {
         // GET: Clock
         ClockBll bll = new ClockBll();
-        public ActionResult Index(string FindBH="", string FindName="")
+        public ActionResult Index(string FindBH="", string FindName="",string time="",int pageindex=1,int pagesize=3)
         {
+            ViewBag.pindex = pageindex;
+            ViewBag.pagesize = pagesize;
             List<Clock> list = bll.GetList();
             var linq = from a in list select a;
             if (FindBH != "")
@@ -25,11 +27,13 @@ namespace MVC.Controllers
             {
                 linq = from a in list where a.StaffName.Contains(FindName) select a;
             }
-            if (FindBH != "" && FindName != "")
+            if (time != "")
             {
-                linq = from a in list where a.StaffName.Contains(FindName) && a.StaffNO.Contains(FindBH) select a;
+                linq = from a in list where a.HitTime.Equals(time) select a;
             }
-            return View(linq);
+            ViewBag.count =Math.Ceiling(linq.Count()*1.0/pagesize);
+            var fen = linq.Skip((pageindex-1)*pagesize).Take(pagesize).ToList();
+            return View(fen);
         }
         [HttpGet]
         public ActionResult daka()

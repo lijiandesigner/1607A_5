@@ -2,50 +2,92 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using (Html.BeginForm())
-{
-    <span>员工编号：</span> <input id="Text1" type="text" name="FindBH" />
-    <span>员工姓名：</span><input id="Text1" type="text" name="FindName" />
-    <input id="Submit1" type="submit" value="查询" />
-}
-<table class="table">
-    <tr>
-        <th>
-            员工编号
-        </th>
-        <th>
-            员工姓名
-        </th>
-        <th>
-            打卡时间
-        </th>
-        <th>
-            上班/下班时间
-        </th>
-        <th>
-            打卡状态
-        </th>
-    </tr>
+<script src="~/My97DatePicker/lang/en.js"></script>
+<script src="~/My97DatePicker/WdatePicker.js"></script>
 
-    @foreach (var item in Model)
+    @using (Html.BeginForm())
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StaffNO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StaffName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HitTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hours)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HitSate)
-            </td>
-        </tr>
-    }
 
-</table>
+        <span>日期查询：</span><input type="text" name="time" value="" onclick="WdatePicker()" />
+        <span>员工编号：</span> <input id="Text1" type="text" name="FindBH" />
+        <span>员工姓名：</span><input id="Text1" type="text" name="FindName" />
+        <input id="Submit1" type="submit" value="查询" />
+    }
+        <div style="padding-left:1000px;">
+            <span>一共：@ViewBag.count 页</span></td>
+            <span>每页：@ViewBag.pagesize 条</span>
+            @Html.DropDownList("pagesize",new List<SelectListItem>() {
+          new SelectListItem{Text="1",Value="1"},
+          new SelectListItem{Text="3",Value="3"},
+          new SelectListItem{Text="5",Value="5"},
+          new SelectListItem{Text="7",Value="7"},
+          new SelectListItem{Text="9",Value="9"}
+        })
+        </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                员工编号
+            </th>
+            <th>
+                员工姓名
+            </th>
+            <th>
+                打卡时间
+            </th>
+            <th>
+                上班/下班时间
+            </th>
+            <th>
+                打卡状态
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffNO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HitTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hours)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HitSate)
+                </td>
+            </tr>
+        }
+    </table>
+    <div style="padding-left:500px;">
+
+        <input id="Button1" type="button" value="上一页" class="btn btn-default" onclick="location.href='/Clock/Index/?pageindex=@(ViewBag.pindex-1)'" style="width:60px;height:30px;" />
+        <input id="Button2" type="button" value="下一页" class="btn btn-default" onclick="location.href='/Clock/Index/?pageindex=@(ViewBag.pindex+1)'" style="width:60px;height:30px;" />
+    </div>
+    <div style="padding-left:700px;">
+
+    </div>
+    <script>
+    $("#pagesize").change(function () {
+        var pagesize = $(this).val();
+        location.href = '/Clock/Index/?pageindex=@ViewBag.pageindex'+'&pagesize=' + pagesize;
+    })
+    if (@ViewBag.pindex>=@ViewBag.count) {
+        var one = $("#Button2").hide();
+    }
+    else {
+        $("#Button2").show();
+    }
+    if (@ViewBag.pindex<2) {
+        $("#Button1").hide();
+    }
+    else {
+        $("#Button1").show();
+    }
+    </script>
