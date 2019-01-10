@@ -1,7 +1,22 @@
 ﻿@model IEnumerable<Model.Depart>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["Job"].ToString().Contains("部长"))
+    {
+        Layout = "~/Views/Shared/Depart.cshtml";
+    }
+    else if (Session["Job"].ToString().Contains("组长"))
+    {
+        Layout = "~/Views/Shared/Group.cshtml";
+    }
+    else if (Session["Job"].ToString().Contains("组员"))
+    {
+        Layout = "~/Views/Shared/Crew.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     ViewBag.Title = "Index";
 }
 

@@ -2,7 +2,22 @@
 @model IEnumerable<Model.Leave>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["Job"].ToString().Contains("部长"))
+    {
+        Layout = "~/Views/Shared/Depart.cshtml";
+    }
+    else if (Session["Job"].ToString().Contains("组长"))
+    {
+        Layout = "~/Views/Shared/Group.cshtml";
+    }
+    else if (Session["Job"].ToString().Contains("组员"))
+    {
+        Layout = "~/Views/Shared/Crew.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
 
 <!DOCTYPE html>
@@ -63,7 +78,7 @@
 
                 <td>
                     @{ StateInfo state = (StateInfo)Convert.ToInt32(item.LeaveState);}
-                    @if (state == StateInfo.待审核)
+                    @if (state == StateInfo.待审核 && Session["UserName"].ToString() != item.StaffName)
                     {
                         @Html.ActionLink("审核", "Edit", new { id = item.LeaveId })
                     }
@@ -71,9 +86,13 @@
                     {
                         <a href="#">已通过</a>
                     }
-                    else
+                    else if (state == StateInfo.驳回)
                     {
                         <a href="#">已驳回 | </a><a href="" onclick="Look(@item.LeaveId)">查看原因</a>
+                    }
+                    else
+                    {
+                        <p>待审核</p>
                     }
                 </td>
                 <td>
@@ -83,7 +102,7 @@
                     }
                     else
                     {
-                        <p>等待审批人审批</p>
+                        <p>等待上级审批</p>
                     }
                 </td>
                 <td>

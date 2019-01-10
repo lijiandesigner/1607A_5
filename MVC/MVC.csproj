@@ -711,6 +711,9 @@
     <Content Include="Views\Depart\Add.cshtml" />
     <Content Include="Views\Salary\Edit.cshtml" />
     <Content Include="Views\Depart\Edit.cshtml" />
+    <Content Include="Views\Shared\Group.cshtml" />
+    <Content Include="Views\Shared\Crew.cshtml" />
+    <Content Include="Views\Shared\Depart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

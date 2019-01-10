@@ -1,7 +1,22 @@
 ﻿@model Model.Leave
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["Job"].ToString().Contains("部长"))
+    {
+        Layout = "~/Views/Shared/Depart.cshtml";
+    }
+    else if (Session["Job"].ToString().Contains("组长"))
+    {
+        Layout = "~/Views/Shared/Group.cshtml";
+    }
+    else if (Session["Job"].ToString().Contains("组员"))
+    {
+        Layout = "~/Views/Shared/Crew.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
 
 <!DOCTYPE html>
@@ -27,7 +42,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.StaffNo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.StaffNo, new { htmlAttributes = new { @class = "form-control" } })
+                    <p>@Session["StaffNo"]</p>
                     @Html.ValidationMessageFor(model => model.StaffNo, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -35,7 +50,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.StaffName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.StaffName, new { htmlAttributes = new { @class = "form-control" } })
+                    <p>@Session["UserName"]</p>
                     @Html.ValidationMessageFor(model => model.StaffName, "", new { @class = "text-danger" })
                 </div>
             </div>

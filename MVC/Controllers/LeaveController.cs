@@ -13,10 +13,31 @@ namespace MVC.Controllers
     public class LeaveController : Controller
     {
         // GET: Leave
+        StaffBLL staffBLL = new StaffBLL();
         LeaveBLL BLL = new LeaveBLL();
         public ActionResult Index()
         {
             List<Leave> list = BLL.GetList();
+            if (Session["Job"].ToString().Contains("部长"))
+            {
+                string job = Session["Job"].ToString().Substring(0, 2);
+                list = (from s in staffBLL.GetList()
+                        join y in BLL.GetList() on s.StaffNo equals y.StaffNo
+                        where s.JobId.Contains(job)
+                        select y).ToList();
+            }
+            else if (Session["Job"].ToString().Contains("组长"))
+            {
+                string job = Session["Job"].ToString().Substring(0, 2);
+                list = (from s in staffBLL.GetList()
+                        join y in BLL.GetList()
+                        on s.StaffNo equals y.StaffNo
+                        where s.JobId.Contains("组员") && s.JobId.Contains(job)
+                        select y).ToList();
+            }else if(Session["Job"].ToString().Contains("组员"))
+            {
+                list = list.Where(s => s.StaffNo == Session["StaffNo"].ToString()).ToList();
+            }
             return View(list);
         }
         [HttpGet]
@@ -27,6 +48,8 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Add(Leave leave)
         {
+            leave.StaffNo = Session["StaffNo"].ToString();
+            leave.StaffName = Session["UserName"].ToString();
             int state = 1;
             leave.LeaveState = state.ToString();
             int result = BLL.Add(leave);
