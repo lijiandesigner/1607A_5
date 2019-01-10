@@ -8,6 +8,8 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
     <title>DASHGUM - FREE Bootstrap Admin Template</title>
+    <script src="~/layui/layui.js"></script>
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -80,9 +82,11 @@
                 <!--logo end-->
                 <div class="sidebar-toggle-box" style="padding-left:100px;"><span id="time" style="font-size:17px;">*</span></div>
                 <div class="top-menu" >
+                    @using (Html.BeginForm("daka", "Clock")) {
                     <ul class="nav pull-right top-menu">
-                        <li><a class="logout" href="/Login/Index">退出</a></li>
+                        <li><button class="layui-btn layui-btn-warm" style="margin-top:10px;" type="submit" href="/Clock/daka?Name=@Session["UserName"]&NO=@Session["StaffNo"]">打卡</button></li>
                     </ul>
+                    }
                 </div>
             </header>
             
@@ -107,7 +111,6 @@
                                 <span>考勤部</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="/Clock/daka">打卡</a></li>
                                 <li><a href="/Clock/Index">考勤记录</a></li>
                                 <li><a href="/GoTime/Index">时间表</a></li>
                             </ul>
