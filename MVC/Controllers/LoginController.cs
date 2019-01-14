@@ -13,6 +13,7 @@ namespace MVC.Controllers
     {
         // GET: Login
         StaffBLL BLL = new StaffBLL();
+        JobBLL jobBLL = new JobBLL();
         public ActionResult Show()
         {
             return View();
@@ -31,6 +32,7 @@ namespace MVC.Controllers
                 Session["Path"] = list[0].StaffPhoto;
                 Session["UserName"] = list[0].StaffName;
                 Session["StaffNo"] = list[0].StaffNo;
+                Session["Job"] = list[0].JobId;
                 Response.Write("<script>alert('登录成功!');location.href='/Login/Show'</script>");
             }
             else

@@ -25,7 +25,7 @@ namespace MVC.Controllers
                 list.Add(salaryBLL.GetList().Where(s=>s.StaffNo==item.StaffNo).FirstOrDefault());
             }
             List<Job> jobs = jobBLL.GetList();
-            for (int i = 0; i < list.Count(); i++)
+            for (int i = 0; i < list.Count(); i++ )
             {
                 List<Clock> clocks = clockBll.GetList().Where(s => s.StaffNO == list[i].StaffNo).ToList();
                 list[i].PunishMoney = clocks.Where(s => s.HitSate.Contains("迟到") || s.HitSate.Contains("早退")).Count() * float.Parse(50.0.ToString()) + clocks.Where(s => s.HitSate.Contains("没有上班")).Count() * float.Parse(100.0.ToString()) + clocks.Where(s => s.HitSate.Contains("旷工")).Count() * float.Parse(300.0.ToString());
@@ -33,6 +33,24 @@ namespace MVC.Controllers
                 list[i].LeaveMoney = 0;
                 list[i].AllowMoney = 0;
                 list[i].TrueMoney = list[i].JobMoney - list[i].PunishMoney + list[i].AwardMoney - list[i].LeaveMoney + list[i].AllowMoney;
+            }
+            if(Session["Job"].ToString().Contains("部长"))
+            {
+                string job = Session["Job"].ToString().Substring(0,2);
+                list = (from s in staffBLL.GetList()
+                        join y in salaryBLL.GetList() on s.StaffNo equals y.StaffNo
+                        where s.JobId.Contains(job)
+                        select y).ToList();
+            }else if(Session["Job"].ToString().Contains("组长"))
+            {
+                string job = Session["Job"].ToString().Substring(0,2);
+                list = (from s in staffBLL.GetList()
+                        join y in salaryBLL.GetList() on s.StaffNo equals y.StaffNo
+                        where s.JobId.Contains("组员") && s.JobId.Contains(job)
+                        select y).ToList();
+            }else if(Session["Job"].ToString().Contains("组员"))
+            {
+                list = list.Where(s => s.StaffNo == Session["StaffNo"].ToString()).ToList();
             }
             return View(list);
         }
@@ -65,9 +83,9 @@ namespace MVC.Controllers
         }
         public string Look(string id)
         {
-            List<Clock> list = clockBll.GetList().Where(s => s.StaffNO==id).ToList();
+            List<Clock> list = clockBll.GetList().Where(s => s.HitSate.Contains("早退")||s.HitSate.Contains("旷工")||s.HitSate.Contains("迟到")||s.HitSate.Contains("没有上班")).ToList();
             string result = "罚款原因:\n";
-            foreach (var item in list)
+            foreach (var item in list.Where(s=>s.StaffNO==id))
             {
                 result += $"{item.HitTime}:{item.HitSate}\n";
             }

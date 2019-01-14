@@ -1,7 +1,22 @@
 ﻿@model IEnumerable<Model.GoTime>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["Job"].ToString().Contains("部长"))
+    {
+        Layout = "~/Views/Shared/Depart.cshtml";
+    }
+    else if (Session["Job"].ToString().Contains("组长"))
+    {
+        Layout = "~/Views/Shared/Group.cshtml";
+    }
+    else if (Session["Job"].ToString().Contains("组员"))
+    {
+        Layout = "~/Views/Shared/Crew.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
 
 <table class="table">
@@ -37,7 +52,11 @@
                 @item.PMComeTime.ToString().Substring(item.PMComeTime.ToString().LastIndexOf(' '), item.PMComeTime.ToString().Length == 16 ? 5 : 6)
             </td>
             <td>
-                <input id="Button1" type="button" value="修改时间" class="btn btn-default" onclick="location.href='/GoTime/Upd/?id=@item.GoTimeId'" />
+                @if (Session["Job"].ToString().Contains("董事长"))
+                {
+                    @Html.ActionLink("修改时间", "Upd", new { id = item.GoTimeId })
+                }
+
             </td>
         </tr>
     }
