@@ -23,7 +23,7 @@ namespace MVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult add(string amH,string amM,string comH,string comM,string pmH,string pmM,string comP,string comPP)
+        public ActionResult add(string amH,string amM,string comH,string comM,strifng pmH,string pmM,string comP,string comPP)
         {
             GoTime g = new GoTime();
             var p = DateTime.Now.ToString("yyyy/MM/dd");
